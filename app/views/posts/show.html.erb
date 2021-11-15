@@ -1,0 +1,22 @@
+<body>
+        <div>
+           <nav>left</nav>
+            <main>
+              <h1>投稿詳細画面</h1>
+              <div>
+                <%= attachment_image_tag @post,:car_image,format: 'jpeg',fallback: "no_image.jpg",size: "200x200" %>
+                  <p>写真の内容について:<%= @post.detail %></p>
+                  <p>車の名前:<%= @post.car_name %></p>
+                  <p>写真の住所:<%= @post.photo_address %></p>
+                  <p>カスタマイズポイント:<%= @post.comment %></p>
+                  <p>投稿日時：<%= @post.created_at.strftime('%Y/%m/%d') %></p>
+                  
+                  <% if @post.user == current_user %>
+                  <p><%= link_to "削除", new_post_path(@post), method: :delete %></p>
+                  <% end %>
+              </div>
+
+            </main>
+            <aside>right</aside>
+        </div>
+</body>

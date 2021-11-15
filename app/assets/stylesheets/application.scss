@@ -13,3 +13,52 @@
  *= require_tree .
  *= require_self
  */
+ @import "bootstrap";
+ @import 'font-awesome-sprockets';
+ @import 'font-awesome';
+
+
+body {
+  width: 1000px; /*#固定幅調整*/
+  margin: 0 auto; /*#固定幅調整*/
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  height: 100px
+}
+
+div {
+  display: flex;
+  flex: 1;
+}
+li {
+  list-style: none;/*#リストマーク消し*/
+}
+main {
+  flex: 1;
+}
+nav {
+  width: 200px;
+}
+
+aside {
+  width: 100px;
+}
+
+footer {
+  height: 100px;
+}
+
+@media screen and (max-width: 900px) {
+    /*#レスポンシブ対応*/
+    body, nav, aside {
+        width: 100%;
+    }
+    div {
+        flex-direction: column;
+    }
+
+}

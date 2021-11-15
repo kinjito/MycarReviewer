@@ -1,0 +1,28 @@
+<body>
+        <div>
+           <nav>
+              <li><%= link_to "絶景スポット",posts_map_path %></li>
+              <li><%= link_to "車の魅力について",new_post_path %></li>
+           </nav>
+
+            <main>
+              <h1>投稿一覧画面</h1>
+              <% @posts.each do |post| %>
+              <div>
+                <%= link_to post_path(post.id) do %>
+                  <%= attachment_image_tag post,:car_image,format: 'jpeg',fallback: "no_image.jpg",size: "200x200" %>
+                <% end %>
+                <p>写真の内容について:<%= post.detail %></p>
+                <p>車の名前:<%= post.car_name %></p>
+                <p>写真の住所:<%= post.photo_address %></p>
+                <p>カスタマイズポイント:<%= post.comment %></p>
+              </div>
+
+              <% end %>
+
+
+
+            </main>
+            <aside>right_aside</aside>
+        </div>
+</body>

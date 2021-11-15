@@ -1,0 +1,2 @@
+class CarComment < ApplicationRecord
+end
