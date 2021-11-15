@@ -15,6 +15,17 @@
         
  　　　　　　   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       　　<%= render "devise/shared/error_messages", resource: resource %>
+      　　
+      　　    <div class="field">
+              <%= f.label :image, class: "label" %>
+              <p class="control has-icons-left">
+              <%= f.attachment_field :image, autofocus: true %>
+                <span class="icon is-small is-left">
+                  <i class="fas fa-user"></i>
+                </span>
+              </p>
+            </div>
+      　　  
       
             <div class="field">
               <%= f.label :name, class: "label" %>
@@ -39,6 +50,17 @@
             </div>
             
             
+            <div class="field">
+              <%= f.label :self_introduction, class: "label" %>
+              <p class="control has-icons-left">
+              <%= f.text_area :self_introduction, autofocus: true %>
+                <span class="icon is-small is-left">
+                  <i class="fas fa-user"></i>
+                </span>
+              </p>
+            </div>
+            
+            
             
             <div class="field">
               <%= f.label :password, class: "label" %>
@@ -53,6 +75,7 @@
               </p>
             </div>
           
+          
             <div class="field">
               <%= f.label :password_confirmation, class: "label" %>
               <p class="control has-icons-left">
@@ -64,13 +87,12 @@
             </div>
           
             <div class="actions">
-              <%= f.submit "新規登録", class: "btn btn-success" %>
+              <%= f.submit "新規登録", class: "button is-success" %>
             </div>
           <% end %>
           
-               <!--< %= render "devise/shared/links" %> -->
           
-        </div>
-    　  </div>
-  　  </div>
+        　</div>
+    　　</div>
+  　　</div>
 　　</section>

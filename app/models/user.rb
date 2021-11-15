@@ -6,5 +6,6 @@ class User < ApplicationRecord
          
   #UserモデルにPostモデルを関連付ける
   has_many :posts, dependent: :destroy
+  attachment :image
 
 end

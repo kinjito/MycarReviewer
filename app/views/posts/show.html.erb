@@ -1,6 +1,7 @@
 <body>
         <div>
-           <nav>left</nav>
+          <nav>left</nav>
+           
             <main>
               <h1>投稿詳細画面</h1>
               <div>
@@ -10,13 +11,13 @@
                   <p>写真の住所:<%= @post.photo_address %></p>
                   <p>カスタマイズポイント:<%= @post.comment %></p>
                   <p>投稿日時：<%= @post.created_at.strftime('%Y/%m/%d') %></p>
-                  
+
                   <% if @post.user == current_user %>
-                  <p><%= link_to "削除", new_post_path(@post), method: :delete %></p>
+                    <p><%= link_to "削除", post_path(@post), method: :delete %></p>
                   <% end %>
               </div>
-
             </main>
-            <aside>right</aside>
+            
+          <aside>right</aside>
         </div>
 </body>

@@ -19,7 +19,7 @@
 
 
 body {
-  width: 1000px; /*#固定幅調整*/
+  // width: 1000px; /*#固定幅調整*/
   margin: 0 auto; /*#固定幅調整*/
   min-height: 100vh;
   display: flex;
@@ -27,7 +27,8 @@ body {
 }
 
 header {
-  height: 100px
+  outline: 1px solid gray;
+  height: 80px
 }
 
 div {
@@ -41,14 +42,17 @@ main {
   flex: 1;
 }
 nav {
-  width: 200px;
+  outline: 1px solid gray;
+  width: 100px;
 }
 
 aside {
+  outline: 1px solid gray;
   width: 100px;
 }
 
 footer {
+  outline: 1px solid gray;
   height: 100px;
 }
 
