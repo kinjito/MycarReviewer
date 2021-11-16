@@ -1,98 +1,57 @@
-    <section class="hero is-info">
-      <div class="hero-body">
-        <div class="container">
-          <h1 class="title">
-            <h2>新規登録</h2>
-          </h1>
-        </div>
-      </div>
-    </section>
-    
-    <section class="section">
-      <div class="container">
-        <div class="columns is-centered">
-          <div class="column is-5">
-        
- 　　　　　　   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-      　　<%= render "devise/shared/error_messages", resource: resource %>
-      　　
-      　　    <div class="field">
-              <%= f.label :image, class: "label" %>
-              <p class="control has-icons-left">
-              <%= f.attachment_field :image, autofocus: true %>
-                <span class="icon is-small is-left">
-                  <i class="fas fa-user"></i>
-                </span>
-              </p>
+<body>
+  <div>
+    <nav></nav>
+        <main>
+          <div class="container">
+            <h1 class="form-title">新規登録画面</h1>
+            　<div class="row">
+              　<div class="col-md-6 col-md-offset-3 form-wrapper">
+
+       　　　　　　   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+            　　<%= render "devise/shared/error_messages", resource: resource %>
+
+                  <div class = 'form-group fas fa-id-card'>
+                    <%= f.label :image, "プロフィール画像" %>
+                    <%= f.attachment_field :image, autofocus: true %>
+                  </div>
+
+                  <div class = 'form-group fas fa-user'>
+                    <%= f.label :name, "ユーザー名" %>
+                    <%= f.text_field :name, autofocus: true, class: "form-control", placeholder: "最大10文字", maxlength: 10 %>
+                  </div>
+
+                  <div class = 'form-group fas fa-envelope'>
+                    <%= f.label :email, "メールアドレス" %>
+                    <%= f.email_field :email, autocomplete: "email", class: "form-control", placeholder: "xxx@email.com" %>
+                  </div>
+
+                  <div class = 'form-group fas fa-comment-alt'>
+                    <%= f.label :self_introduction, "自己紹介文" %>
+                    <%= f.text_area :self_introduction, autofocus: true, class: "form-control", placeholder: "自己紹介文"%>
+                  </div>
+
+                  <div class="form-group fas fa-lock">
+                    <%= f.label :password, "パスワード" %>
+                    <% if @minimum_password_length %>
+                    <em>(半角英数<%= @minimum_password_length %>文字以上)</em>
+                    <% end %>
+                    <%= f.password_field :password, autocomplete: "new-password", class: "form-control", placeholder: "半角英数6文字以上"  %>
+                  </div>
+
+
+                  <div class="form-group fas fa-lock">
+                    <%= f.label :password_confirmation, "パスワード変更(確認)" %>
+                    <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control", placeholder: "再度ご入力ください" %>
+                  </div>
+
+                  <div class="actions">
+                    <%= f.submit "新規登録", class: "btn btn-success" %>
+                  </div>
+                <% end %>
+              </div>
             </div>
-      　　  
-      
-            <div class="field">
-              <%= f.label :name, class: "label" %>
-              <p class="control has-icons-left">
-              <%= f.text_field :name, autofocus: true %>
-                <span class="icon is-small is-left">
-                  <i class="fas fa-user"></i>
-                </span>
-              </p>
-            </div>
-            
-            
-          
-            <div class="field">
-              <%= f.label :email, class: "label" %>
-              <p class="control has-icons-left">
-                <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-                <span class="icon is-small is-left">
-                 <i class="fas fa-envelope"></i>
-                </span>
-              </p>
-            </div>
-            
-            
-            <div class="field">
-              <%= f.label :self_introduction, class: "label" %>
-              <p class="control has-icons-left">
-              <%= f.text_area :self_introduction, autofocus: true %>
-                <span class="icon is-small is-left">
-                  <i class="fas fa-user"></i>
-                </span>
-              </p>
-            </div>
-            
-            
-            
-            <div class="field">
-              <%= f.label :password, class: "label" %>
-              <% if @minimum_password_length %>
-              <em>(<%= @minimum_password_length %> characters minimum)</em>
-              <% end %>
-              <p class="control has-icons-left">
-              <%= f.password_field :password, autocomplete: "new-password" %>
-                <span class="icon is-small is-left">
-                  <i class="fas fa-lock"></i>
-                </span>
-              </p>
-            </div>
-          
-          
-            <div class="field">
-              <%= f.label :password_confirmation, class: "label" %>
-              <p class="control has-icons-left">
-              <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-                <span class="icon is-small is-left">
-                  <i class="fas fa-lock"></i>
-                </span>
-              </p>
-            </div>
-          
-            <div class="actions">
-              <%= f.submit "新規登録", class: "button is-success" %>
-            </div>
-          <% end %>
-          
-          
-        　</div>
-    　　</div>
-  　　</div>
-　　</section>
+          </div>
+        </main>
+      <aside></aside>
+    </div>
+</body>

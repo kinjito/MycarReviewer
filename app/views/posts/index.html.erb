@@ -5,7 +5,7 @@
             <main>
               <h1>投稿一覧画面</h1>
                     <%= search_form_for @q do |f| %>
-                      <%= f.label :car_name, "Keyword" %>
+                      <%= f.label :car_name, "好きなワードで一覧画面から検索" %>
                       　　　　　　　　　　<!--#ここにカラム名を追加すると検索できるワードが増える-->
                       <%= f.search_field :car_name_or_comment_cont,placeholder: "キーワード検索" %>
 

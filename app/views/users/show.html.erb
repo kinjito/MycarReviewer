@@ -1,5 +1,14 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
-
-
-
+<dl>
+  <dt>email</dt>
+  <dd><%= @user.email %></dd>
+  <dt>name</dt>
+  <dd><%= @user.name %></dd>
+  <dt>self_introduction</dt>
+  <dd><%= @user.self_introduction %></dd>
+  <dt>image</dt>
+  <dd><a href="<%= @user.image_url %>" target="_blank"><%= attachment_image_tag @user, :image, size: "100x100" %></a><br>
+    <span>filename: <%= @user.image_filename %></span><br>
+    <span>filesize(kb): <%= number_to_human_size(@user.image_size) %></span>
+  </dd>
+  <span><%= link_to 'change password', update_password_path %></span>
+</dl>

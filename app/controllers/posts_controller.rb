@@ -19,6 +19,10 @@ class PostsController < ApplicationController
     #空のインスタンス変数を渡して表示
     @post = Post.new
   end
+  
+  # def edit
+  #   @post = Post.find(params[:id])
+  # end
 
   def create
     #投稿内容の保存

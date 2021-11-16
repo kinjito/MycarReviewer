@@ -1,7 +1,13 @@
 Rails.application.routes.draw do
-  devise_for :users
-  
-  get '/' => "home#top"
+  root to: 'home#top'
+
+  get '/users/:id/password' => "users#update_password", as: :update_password
+  #post '/users/change_password' => "users#change_password", as: :change_password
+  devise_for :users, :controllers => {
+    :registrations => 'users/registrations',
+    :sessions => 'users/sessions'
+  }
+
   get '/posts/map'=> "posts#map"
 
   resources :users, except: [:destroy, :index]
