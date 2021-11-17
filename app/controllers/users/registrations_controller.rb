@@ -5,8 +5,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
   protected
 
   def update_resource(resource, params)
+    #プロフィールを編集する時はパスワードなしで更新できるようにし、パスワードを編集する時だけパスワード入力したい
+    #パスワード更新する際に空白だったら
     if params[:password].blank?
+        # パスワードなしでユーザー情報を更新
       resource.update_without_password(params)
+    else
+        #パスワードありで更新
+      resource.update_with_password(params)
     end
   end
 

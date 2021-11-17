@@ -27,7 +27,7 @@ body {
 }
 
 header {
-  outline: 1px solid gray;
+  // outline: 1px solid gray;
   height: 80px
 }
 
@@ -52,13 +52,13 @@ aside {
 }
 
 footer {
-  outline: 1px solid gray;
-  height: 60px;
+  // outline: 1px solid gray;
+  height: 80px;
 }
 
 @media screen and (max-width: 900px) {
     /*#レスポンシブ対応*/
-    body, nav, aside {
+    body, aside {
         width: 100%;
     }
     div {

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_16_121603) do
+ActiveRecord::Schema.define(version: 2021_11_17_134719) do
 
   create_table "car_comments", force: :cascade do |t|
     t.text "post_comment"
@@ -18,6 +18,14 @@ ActiveRecord::Schema.define(version: 2021_11_16_121603) do
     t.datetime "updated_at", null: false
     t.integer "user_id"
     t.integer "image_id"
+    t.integer "post_id"
+  end
+
+  create_table "favorites", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "post_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "makers", force: :cascade do |t|
@@ -36,6 +44,24 @@ ActiveRecord::Schema.define(version: 2021_11_16_121603) do
     t.integer "user_id"
     t.integer "maker_id"
     t.string "car_image_id"
+    t.string "car_image_filename"
+    t.integer "car_image_size"
+  end
+
+  create_table "theme_comments", force: :cascade do |t|
+    t.integer "theme_id"
+    t.integer "user_id"
+    t.text "comment_text"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["theme_id"], name: "index_theme_comments_on_theme_id"
+    t.index ["user_id"], name: "index_theme_comments_on_user_id"
+  end
+
+  create_table "themes", force: :cascade do |t|
+    t.text "theme_text"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
