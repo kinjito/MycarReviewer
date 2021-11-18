@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
   def new
+    @user = User.find(params[:id])
+    @theme_comment = Theme_comment.new
   end
 
   def show

@@ -1,28 +1,34 @@
-    <body>
-        <div>
-          <nav></nav>
-            <main>
-              <h1>投稿一覧画面</h1>
-                    <%= search_form_for @q do |f| %>
-                      <p>
-                        <%= f.search_field :car_name_or_comment_cont,placeholder: "キーワード検索" %>
-                        <%= f.submit "検索" %>
-                      </p>
-                      <% end %>
-                      <% @posts.each do |post| %>
-                      
-                      <div>
-                        <%= link_to post_path(post.id) do %>
-                          <%= attachment_image_tag post,:car_image,format: 'jpeg',fallback: "no_image.jpg",size: "200x200" %>
-                        <% end %>
-                        <p>写真の内容について:<%= post.detail %></p>
-                        <p>車の名前:<%= post.car_name %></p>
-                        <p>写真の住所:<%= post.photo_address %></p>
-                        <p>カスタマイズポイント:<%= post.comment %></p>
-                      </div>
-                    <% end %>
-                    <%= paginate @posts %>
-            </main>
-          <aside></aside>
-        </div>
-    </body>
+<body>
+  <div>
+    <nav></nav>
+      <main>
+        <h1 class="form-title">投稿一覧画面</h1>
+            <%= search_form_for @q do |f| %>
+              <div>
+                  <%= f.search_field :car_name_or_comment_cont,placeholder: "キーワード検索" %>
+                  <%= f.submit "検索" %>
+              </div>
+            <% end %>
+            
+            <% if user_signed_in? %> 
+              <div><%= link_to  "新規投稿画面へ", new_post_path, class: "btn btn-success" %></div>
+            <% end %>
+
+            <% @posts.each do |post| %>
+            <div>
+                <p>
+                <%= link_to post_path(post.id) do %>
+                  <%= attachment_image_tag post,:car_image,format: 'jpeg',fallback: "no_image.jpg",size: "200x200" %>
+                <% end %>
+                </p>
+                <p>写真の内容について:<%= post.detail %></p>
+                <p>車の名前:<%= post.car_name %></p>
+                <p>写真の住所:<%= post.photo_address %></p>
+                <p>カスタマイズポイント:<%= post.comment %></p>
+            </div>
+            <% end %>
+        <div><%= paginate @posts %></div>
+      </main>
+    <aside></aside>
+  </div>
+</body>

@@ -7,7 +7,7 @@ class Post < ApplicationRecord
   #PostモデルとCarCommentモデルを関連付ける
   has_many :car_comments, dependent: :destroy
   
-  #PostImageモデルに関連付けを追加する
+  #いいね機能でPostモデルに関連付けを追加する
   has_many :favorites, dependent: :destroy
 
   def favorited_by?(user)

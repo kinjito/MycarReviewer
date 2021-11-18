@@ -1,53 +1,58 @@
 <body>
-        <div>
-          <aside></aside>
-            <main>
-              <h1>投稿詳細画面</h1>
-                <div>
-                  <p><a href="<%= @post.car_image_url %>" target="_blank"><%= attachment_image_tag @post,:car_image,format: 'jpeg',fallback: "no_image.jpg",size: "400x400" %></a><br>
-                    <span>name:<%= @post.car_image_filename %></span><br>
-                    <span>size:<%= number_to_human_size(@post.car_image_size) %></span>
-                  </p>
-                    <p>写真の内容について:<%= @post.detail %></p></br>
-                    <p>車の名前:<%= @post.car_name %></p></br>
-                    <p>写真の住所:<%= @post.photo_address %></p></br>
-                    <p>カスタマイズポイント:<%= @post.comment %></p></br>
-                    <p>投稿日時：<%= @post.created_at.strftime('%Y/%m/%d') %></p></br>
-
-                    <!--#いいね機能-->
+  <div>
+    <nav></nav>
+      <main>
+          <div class="container">
+            <h1 class="form-title">投稿詳細画面</h1>
+            　<div class="row">
+              　<div class="col-md-6 col-md-offset-3 form-wrapper">
+                  <div>
+                    <p><a href="<%= @post.car_image_url %>" target="_blank"><%= attachment_image_tag @post,:car_image,format: 'jpeg',fallback: "no_image.jpg",size: "400x400" %></a><br>
+                      <span>name:<%= @post.car_image_filename %></span><br>
+                      <span>size:<%= number_to_human_size(@post.car_image_size) %></span><br>
+                      <span>投稿日時：<%= @post.created_at.strftime('%Y/%m/%d') %></span>
+                      <!--#いいね機能-->
                       <% if @post.favorited_by?(current_user) %>
-                        <p>
-                          <%= link_to post_favorites_path(@post), method: :delete do %>
+                      <span>
+                        <%= link_to post_favorites_path(@post), method: :delete do %>
                             ♥<%= @post.favorites.count %> いいね
-                          <% end %>
-                        </p>
-                        <% else %>
-                        <p>
-                          <%= link_to post_favorites_path(@post), method: :post do %>
+                        <% end %>
+                      <% else %>
+                        <%= link_to post_favorites_path(@post), method: :post do %>
                             ♡<%= @post.favorites.count %> いいね
-                          <% end %>
-                        </p>
+                        <% end %>
+                      </span></br>
                       <% end %>
-                    <!--#いいね機能-->
-
-                      <div>
-                        <p>コメント件数：<%= @post.car_comments.count %></p>
-                        <% @post.car_comments.each do |car_comment| %>
-                          <%= car_comment.user.name %>
-                          <%= car_comment.created_at.strftime('%Y/%m/%d') %><%= car_comment.post_comment %>
-                        <% end %>
-                      </div>
-                      <div>
-                        <%= form_with(model:[@post, @car_comment], local: true) do |f| %>
-                          <%= f.text_area :post_comment, rows:'5',placeholder: "コメントをここに" %></br>
-                          <%= f.submit "送信する" %>
-                        <% end %>
-                      </div>
-                    <% if @post.user == current_user %>
-                      <p><%= link_to "投稿削除", post_path(@post), method: :delete %></p>
-                    <% end %>
-                </div>
-            </main>
-          <aside></aside>
-        </div>
+                      <span>コメント件数：<%= @post.car_comments.count %></span></br>
+                      <span>車の名前:<%= @post.car_name %></span></br>
+                      <span>写真の住所:<%= @post.photo_address %></span></br>
+                      <span>写真の内容について:<%= @post.detail %></span></br>
+                      <span>カスタマイズポイント:<%= @post.comment %></span></br>
+                      <% @post.car_comments.each do |car_comment| %>
+                      <span>
+                        ユーザー名:<%= car_comment.user.name %>
+                        コメント:<%= car_comment.post_comment %>
+                        投稿日時:<%= car_comment.created_at.strftime('%Y/%m/%d') %>
+                      </span>
+                      <% end %>
+                             
+                              <span>
+                                <%= form_with(model:[@post, @car_comment], local: true) do |f| %>
+                                  <%= f.text_area :post_comment, rows:'5',placeholder: "コメントをここに" %></br>
+                                  <%= f.submit "送信する" %>
+                                <% end %>
+                              </span>
+                                
+                                <% if @post.user == current_user %>
+                                  <%= link_to "投稿削除", post_path(@post), method: :delete %>
+                                <% end %>
+                    </p>
+                　</div>
+              </div>
+            </div>
+          </div>
+        </main>
+      <aside></aside>
+    </div>
 </body>
+

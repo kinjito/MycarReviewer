@@ -1,2 +1,15 @@
 <h1>Users#new</h1>
 <p>Find me in app/views/users/new.html.erb</p>
+                      <div>
+                        <p>コメント件数：<%= @user.theme_comments.count %></p>
+                        <% @user.theme_comments.each do |theme_comment| %>
+                          <%= theme_comment.user.name %>
+                          <%= theme_comment.created_at.strftime('%Y/%m/%d') %><%= theme_comment.comment_text %>
+                        <% end %>
+                      </div>
+                      <div>
+                        <%= form_with(model:[@user, @theme_comment], local: true) do |f| %>
+                          <%= f.text_area :comment_text, rows:'5',placeholder: "コメントをここに" %></br>
+                          <%= f.submit "送信する" %>
+                        <% end %>
+                      </div>
