@@ -1,0 +1,15 @@
+                      <div>
+                        <p>コメント件数：<%= @user.theme_comments.count %>
+                        <% @user.theme_comments.each do |theme_comment| %>
+                          ユーザー名：<%= theme_comment.user.name %>
+                          コメント：<%= theme_comment.comment_text %>
+                          投稿日時：<%= theme_comment.created_at.strftime('%Y/%m/%d') %><%= theme_comment.comment_text %>
+                        <% end %>
+                        </p>
+                      </div>
+                      <div>
+                        <%= form_with(model:[@user,@theme_comment], local: true) do |f| %>
+                          <%= f.text_area :comment_text, rows:'5',placeholder: "コメントをここに" %></br>
+                          <%= f.submit "送信する" %>
+                        <% end %>
+                      </div>

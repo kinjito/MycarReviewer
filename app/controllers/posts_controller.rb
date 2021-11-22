@@ -19,7 +19,7 @@ class PostsController < ApplicationController
     #空のインスタンス変数を渡して表示
     @post = Post.new
   end
-  
+
   # def edit
   #   @post = Post.find(params[:id])
   # end
@@ -27,13 +27,16 @@ class PostsController < ApplicationController
   def create
     #投稿内容の保存
     @post = Post.new(post_params)
-   
+
     @post.user_id = current_user.id
     @post.save
     redirect_to posts_path
   end
 
   def map
+    @post = Post.last
+    #postの一番最新のぶんをとってる
+    gon.user = @post # 追記
   end
 
   def destroy

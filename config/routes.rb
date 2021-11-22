@@ -9,17 +9,23 @@ Rails.application.routes.draw do
   }
 
   get '/posts/map'=> "posts#map"
+  get '/users/charm'=> "users#charm"
 
-  resources :users, except: [:destroy, :index]
+  resources :users do
+      resources :theme_comments, only: [:create, :destroy]
+      resource :relationships, only: [:create, :destroy]
+      get 'followings' => 'relationships#followings', as: 'followings'
+      get 'followers' => 'relationships#followers', as: 'followers'
+
+  end
+
 
   resources :posts do
       resources :car_comments, only: [:create, :destroy]
-      
+
       resource :favorites, only: [:create, :destroy]
   end
-  
-  resources :themes do
-      resources :theme_comments, only: [:create, :destroy]
-  end
+
+  resources :themes
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

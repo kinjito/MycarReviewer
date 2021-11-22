@@ -6,32 +6,34 @@
         <%= csrf_meta_tags %>
         <%= csp_meta_tag %>
 
+        <!--マップ機能-->
+        <%= include_gon %>
+
         <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
         <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-        
-        
+
     </head>
-    
     <body>
         <header class="sticky-top navbar navbar-expand navbar-dark bg-info">
                 <div class="container">
                     <a class="navbar-brand" href="/">MycarReviewer</a>
                     <div class="collapse navbar-collapse" id="navbar-transparent">
                         <ul class="navbar-nav ml-auto">
-                            <li class="nav-item"><a class="nav-link" href="/posts">Home</a></li>
-                            <li class="nav-item"><a class="nav-link" href="/posts/map">SpotMap</a></li>
-                            <li class="nav-item"><a class="nav-link" href="/users/new">Carcharm</a></li>
-                        <% if user_signed_in? %>   
-                            <li class="nav-item"><a class="nav-link" href="/users/edit">Mypege</a></li>
-                            <li class="nav-item"><a class="nav-link" data-method="delete" href="/users/sign_out"></li>Log out</a></li>
+                            <li class="nav-item"><a class="nav-link fas fa-home" href="/posts">Home</a></li>
+
+                            <li class="nav-item"><a class="nav-link fas fa-map-marker-alt" href="/posts/map" data-turbolinks="false">SpotMap</a></li>
+
+                            <li class="nav-item"><a class="nav-link fas fa-car" href="/users/charm">Carcharm</a></li>
+                        <% if user_signed_in? %>
+                            <li class="nav-item"><a class="nav-link fas fa-user" href="/users/edit">Mypege</a></li>
+                            <li class="nav-item"><a class="nav-link fas fa-sign-out-alt" data-method="delete" href="/users/sign_out">Log out</a></li>
                         <% else %>
-                            <li class="nav-item"><a class="nav-link" href="/users/sign_in">Log in</a></li>
-                            <li class="nav-item"><a class="nav-link" href="/users/sign_up">sign up</a></li>
+                            <li class="nav-item"><a class="nav-link fas fa-sign-in-alt" href="/users/sign_in">Log in</a></li>
+                            <li class="nav-item"><a class="nav-link fas fa-external-link-alt" href="/users/sign_up">sign up</a></li>
                         <% end %>
                         </ul>
                     </div>
                 </div>
-           
         </header>
     <%= yield %>
         <footer class="border-top bg-dark bg-gradient ">

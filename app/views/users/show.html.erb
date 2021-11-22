@@ -3,22 +3,36 @@
     <nav></nav>
       <main>
           <div class="container">
-            <h1 class="form-title">アカウント情報</h1>
             　<div class="row">
               　<div class="col-md-6 col-md-offset-3 form-wrapper">
-
                   <dl>
-                    <dt>email</dt>
-                    <dd><%= @user.email %></dd>
-                    <dt>name</dt>
-                    <dd><%= @user.name %></dd>
-                    <dt>self_introduction</dt>
-                    <dd><%= @user.self_introduction %></dd>
-                    <dt>image</dt>
-                    <dd><a href="<%= @user.image_url %>" target="_blank"><%= attachment_image_tag @user, :image, size: "100x100" %></a><br>
-                      <span>name: <%= @user.image_filename %></span><br>
-                      <span>size: <%= number_to_human_size(@user.image_size) %></span>
-                    </dd>
+                    <table class="table">
+                    <h1 class="form-title">アカウント情報詳細</h1>  
+                      <thead>
+                        <tr>
+                          <th>image</th>
+                          <th>name</th>
+                          <th>follower</th>
+                          <th>followed</th>
+                          <th>email</th>
+                          <th>self_introduction</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>
+                            <%= attachment_image_tag @user, :image, size: "100x100" %>
+                              name:<%= @user.image_filename %>
+                              size:<%= number_to_human_size(@user.image_size) %>
+                          </td>
+                          <td><%= @user.name %></td>
+                          <td><%= @user.follower.count %></td>
+                          <td><%= @user.followed.count %></td>
+                          <td><%= @user.email %></td>
+                          <td><%= @user.self_introduction %></td>
+                        </tr>
+                      </tbody>
+                    </table>
                     <span><%= link_to 'パスワードの変更はこちら', update_password_path %></span>
                   </dl>
                 </div>
