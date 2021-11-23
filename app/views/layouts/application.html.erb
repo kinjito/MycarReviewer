@@ -13,34 +13,33 @@
         <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
     </head>
+    
     <body>
-        <header class="sticky-top navbar navbar-expand navbar-dark bg-info">
+        <header class="sticky-top navbar navbar-expand navbar-light bg-transparent">
                 <div class="container">
-                    <a class="navbar-brand" href="/">MycarReviewer</a>
-                    <div class="collapse navbar-collapse" id="navbar-transparent">
+                    <a class="navbar-brand"><%= link_to (root_path) do%><%= image_tag ('logo1.png') %><% end %></a>
+                    <div class="collapse navbar-collapse " id="navbar-transparent">
                         <ul class="navbar-nav ml-auto">
                             <li class="nav-item"><a class="nav-link fas fa-home" href="/posts">Home</a></li>
-
-                            <li class="nav-item"><a class="nav-link fas fa-map-marker-alt" href="/posts/map" data-turbolinks="false">SpotMap</a></li>
-
-                            <li class="nav-item"><a class="nav-link fas fa-car" href="/users/charm">Carcharm</a></li>
+                            <li class="nav-item"><a class="nav-link fas fa-map-marker-alt" href="/posts/map" data-turbolinks="false">絶景スポット情報</a></li>
+                            <li class="nav-item"><a class="nav-link fas fa-car" href="/users/charm">魅力について</a></li>
                         <% if user_signed_in? %>
-                            <li class="nav-item"><a class="nav-link fas fa-user" href="/users/edit">Mypege</a></li>
-                            <li class="nav-item"><a class="nav-link fas fa-sign-out-alt" data-method="delete" href="/users/sign_out">Log out</a></li>
+                            <li class="nav-item"><a class="nav-link fas fa-user" href="/users/edit">マイページ</a></li>
+                            <li class="nav-item"><a class="nav-link fas fa-sign-out-alt" data-method="delete" href="/users/sign_out">ログアウト</a></li>
                         <% else %>
-                            <li class="nav-item"><a class="nav-link fas fa-sign-in-alt" href="/users/sign_in">Log in</a></li>
-                            <li class="nav-item"><a class="nav-link fas fa-external-link-alt" href="/users/sign_up">sign up</a></li>
+                            <li class="nav-item"><a class="nav-link fas fa-sign-in-alt" href="/users/sign_in">ログイン</a></li>
+                            <li class="nav-item"><a class="nav-link fas fa-external-link-alt" href="/users/sign_up">サインアップ</a></li>
                         <% end %>
                         </ul>
                     </div>
                 </div>
         </header>
     <%= yield %>
-        <footer class="border-top bg-dark bg-gradient ">
-        <ul>
-            <li class="list-inline-item text-white">お問い合わせ先は</li>
-            <li class="list-inline-item text-white"><%= mail_to 'destiniyfreedom@gmail.com', 'こちら'%></li>
-        </ul>
+        <footer class="border-bottom bg-dark bg-transparent">
+            <ul>
+                <center><%= link_to (posts_path) do%><%= image_tag ('logo1.png') %><% end %></center>
+                <center>お問い合わせ先は<%= mail_to 'destiniyfreedom@gmail.com', 'こちら'%></center>
+            </ul>
         </footer>
     </body>
 </html>

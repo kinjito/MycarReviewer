@@ -44,6 +44,7 @@ class PostsController < ApplicationController
     @post.destroy
     redirect_to posts_path
   end
+  
 
   private
    # 投稿データのストロングパラメータ

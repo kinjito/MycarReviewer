@@ -2,6 +2,16 @@
   <div>
     <nav></nav>
       <main>
+        <!--#ヒーロー（ビッグイメージ）を作成-->
+        <div class="jumbotron text-center hero">
+          <li>
+             <h1>車を所有して、自由にいろんな場所に駆け抜ける喜びを共有しよう!</h1>
+             <p>MycarReviewerでは、車の魅力を伝えていき、車を所有してよかったことを共感し合えるサイトです。</p>
+             <%= link_to "いますぐサインアップする",
+              new_user_registration_path, class: "btn btn-primary" %>
+          </li>
+        </div>
+
         <h1 class="form-title">投稿一覧画面</h1>
             <%= search_form_for @q do |f| %>
               <div>
@@ -25,21 +35,23 @@
                 <p>車の名前:<%= post.car_name %></p>
                 <p>写真の住所:<%= post.photo_address %></p>
                 <p>カスタマイズポイント:<%= post.comment %></p>
-                <p>
-                  <% if user_signed_in? %>
-                   <% if current_user != post.user %>
-                   　<% if current_user.following?(post.user) %>
-                     　<%= link_to 'フォロー外す', user_relationships_path(post.user.id), method: :delete, class: "btn btn-default" %>
-                     <% else %>
-                     　<%= link_to 'フォローする', user_relationships_path(post.user.id), method: :POST , class: "btn btn-primary"%>
-                     <% end %>
-                   <% end %>
-                  <% end %>
-                </p>
-            </div>
+                <% if user_signed_in? %>
+                  <p>
+                    <% if current_user != post.user %>
+                      <% if current_user.following?(post.user) %>
+                        <%= link_to 'フォロー外す', user_relationships_path(post.user.id), method: :delete, class: "btn btn-default" %>
+                      <% else %>
+                        <%= link_to 'フォローする', user_relationships_path(post.user.id), method: :POST , class: "btn btn-primary"%>
+                      <% end %>
+                    <% end %>
+                  </p>
+                    <div id="favorite-btn_<%= post.id %>">
+                      <%= render 'favorites/favorite-btn', post: post %>
+                    </div>
+                <% end %>
             <% end %>
-        <div><%= paginate @posts %></div>
+              <li><%= paginate @posts %></li>
+            </div>
       </main>
-    <aside></aside>
   </div>
 </body>

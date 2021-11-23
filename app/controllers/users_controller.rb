@@ -10,7 +10,9 @@ class UsersController < ApplicationController
   end
 
   def charm
-    # @user = User.find(params[:id])
+    #全てのテーマにコメントフォームを持たせるために記述
+    @themes = Theme.all
+    #ログインしてるユーザーのみコメント
     @user = current_user
     @theme_comment = ThemeComment.new
   end
@@ -18,15 +20,15 @@ class UsersController < ApplicationController
   def update_password
     @user = User.find(params[:id])
   end
-  
-  def follower 
+
+  def follower
     #follower一覧
     user = User.find(params[:user_id])
-     @users = user.following_user
+    @users = user.following_user
         # .follower_userメソッド ：Userモデルで定義済
   end
-    
-  def followed 
+
+  def followed
     #followed一覧
     user = User.find(params[:user_id])
     @users = user.follower_user
@@ -37,6 +39,12 @@ class UsersController < ApplicationController
   def create
   end
   
-  
+  def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+    redirect_to posts_path
+  end
+
+
 
 end

@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  
+
     # 1. followメソッド　＝　フォローする
   def follow(user_id)
    follower.create(followed_id: user_id)
@@ -15,7 +15,7 @@ class User < ApplicationRecord
    following_user.include?(user)
   end
 
-  
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -28,9 +28,11 @@ class User < ApplicationRecord
   has_many :car_comments, dependent: :destroy
   #いいね機能のリレーション設定
   has_many :favorites, dependent: :destroy
-  
+
   has_many :theme_comments, dependent: :destroy
-  
+  #テーマにthroughを記述することでカラムを持たせることができるので記述した方がいい
+  has_many :themes, through: :theme_comments
+
   # フォローしている
   has_many :follower, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
     # フォローされてる
@@ -41,5 +43,9 @@ class User < ApplicationRecord
   has_many :follower_user, through: :followed, source: :follower
     #フォローされている人
   has_many :following_user, through: :follower, source: :followed
+  
+  def already_favorited?(post)
+    self.favorites.exists?(post_id: post.id)
+  end
 
 end

@@ -1,0 +1,13 @@
+                      <!--#いいね機能-->
+                      <% if post.favorited_by?(current_user) %>
+                      <span>
+                        <%= link_to post_favorites_path(post), method: :delete, remote: true,  class: "favorite-btn" do %>
+                            ♥<%= post.favorites.count %> いいね
+                        <% end %>
+                      <% else %>
+                        <%= link_to post_favorites_path(post), method: :post, remote: true, class: "favorite-btn" do %>
+                            ♡<%= post.favorites.count %> いいね
+                        <% end %>
+                      </span></br>
+                      <% end %>
+                       <%= post.favorites.count %>
