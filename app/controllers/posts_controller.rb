@@ -36,7 +36,9 @@ class PostsController < ApplicationController
   def map
     @post = Post.last
     #postの一番最新のぶんをとってる
-    gon.user = @post # 追記
+    # gon.user = @post # 追記
+    @posts = Post.all
+    gon.users = @posts
   end
 
   def destroy
@@ -44,12 +46,12 @@ class PostsController < ApplicationController
     @post.destroy
     redirect_to posts_path
   end
-  
+
 
   private
    # 投稿データのストロングパラメータ
   def post_params
-    params.require(:post).permit(:car_image, :detail, :car_name, :photo_address, :comment)
+    params.require(:post).permit(:car_image, :detail, :car_name, :photo_address, :comment, :maker_id)
   end
 
 end

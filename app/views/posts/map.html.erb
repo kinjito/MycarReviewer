@@ -9,14 +9,21 @@
 
                     <style>
                     #map {
-                      height: 800px;
-                      width: 800px;
+                      height: 700px;
+                      width: 100%;
                     }
                     </style>
 
                   <script>
 
                   let map
+                  let geocoder
+                  let marker = []; // マーカーを複数表示させたいので、配列化
+                  let infoWindow = []; // 吹き出しを複数表示させたいので、配列化
+                  const users = gon.users; // コントローラーで定義したインスタンス変数を変数に代入
+
+
+
                     // #宣言
                   function initMap(){
                       geocoder = new google.maps.Geocoder()
@@ -25,48 +32,63 @@
                              // コントローラーで定義した変数から緯度経度を呼び出し、マップの中心に表示
                           center: {
                             // #指定した場所にmapが移動する
-                            lat: gon.user.latitude,
-                            lng: gon.user.longitude
+                            lat: <%= @post.latitude %>,
+                            lng: <%= @post.longitude%>,
                           },
                           // #マップの中心のズーム率
-                          zoom: 12,
+                          zoom: 10,
                       });
 
                       marker = new google.maps.Marker({
                         // コントローラーで定義した変数から緯度経度を呼び出し、マーカーを立てる
                         position: {
-                          lat: gon.user.latitude,
-                          lng: gon.user.longitude
+                          lat: <%= @post.latitude %>,
+                          lng: <%= @post.longitude%>,
                         },
-
                             // #26行目のmapを引き出している
                         map: map
                       });
-                    }
 
-                    let geocoder
+
+
 
                     function codeAddress(){
 
                       let inputAddress = document.getElementById('address').value;
-
-                      geocoder.geocode( { 'address': inputAddress}, function(results, status) {
-                        if (status == 'OK') {
-                          map.setCenter(results[0].geometry.location);
-                          var marker = new google.maps.Marker({
-                              map: map,
-                              position: results[0].geometry.location
-                          });
-                        } else {
-                          alert('該当する結果がありませんでした：' + status);
-                        }
-                      });
                     }
+                        // forは繰り返し処理
+                          // 変数iを0と定義し、
+                          // その後gonで定義したusers分繰り返し加える処理を行う
+                              // console.log(users);
+                       for (let i = 0; i < users.length; i++) {
+                          // map.setCenter(results[0].geometry.location);
+                          marker[i] = new google.maps.Marker({
+                               position: {
+                                  lat: users[i].latitude,
+                                  lng: users[i].longitude,
+                                },
+                              map: map,
+                          });
+
+                          let id = users[i]['id']
+                            // infoWindowは吹き出し
+                            infoWindow[i] = new google.maps.InfoWindow({
+                            // contentで中身を指定
+                            // 今回は文字にリンクを貼り付けた形で表示
+                            content: `<a href='/users/${id}'>${users[i].email}</a>`
+                            });
+                            // markerがクリックされた時、
+                            marker[i].addListener("click", function(){
+                                // infoWindowを表示
+                                infoWindow[i].open(map, marker[i]);
+                            });
+                    }
+                }
                   </script>
                     <!--#mapをグーグルから読み込んでいる-->
                 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-qnvFteh0WMWGbOVDz8Xq2PFBrIc5-_E&callback=initMap" async defer></script>
                                                                                                                 <!--#自動で呼び出してもらってる-->
-              </main>                                                                                    
+              </main>
             <aside></aside>
         </div>
       </body>

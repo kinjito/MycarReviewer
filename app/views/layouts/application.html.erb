@@ -34,12 +34,12 @@
                     </div>
                 </div>
         </header>
+        
     <%= yield %>
-        <footer class="border-bottom bg-dark bg-transparent">
-            <ul>
-                <center><%= link_to (posts_path) do%><%= image_tag ('logo1.png') %><% end %></center>
-                <center>お問い合わせ先は<%= mail_to 'destiniyfreedom@gmail.com', 'こちら'%></center>
-            </ul>
+        <footer class="fixed-bottom bg-dark bg-transparent">
+            <center>
+                <!--< %= link_to (posts_path) do %>< %= image_tag ('logo1.png') %>< % end %>-->
+                お問い合わせ先は<%= mail_to 'destiniyfreedom@gmail.com', 'こちら'%></center>
         </footer>
     </body>
 </html>

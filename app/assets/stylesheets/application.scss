@@ -27,10 +27,6 @@ body {
 }
 
 header {
-  // outline: 1px solid gray;
-  // background: image-url('test4.jpg') center;
-  // background-size: cover;
-  // color: #fff;
   height: 90px
 }
 
@@ -45,18 +41,17 @@ main {
   flex: 1;
 }
 nav {
-  outline: 1px solid gray;
+  // outline: 1px solid gray;
   width: 100px;
 }
 
 aside {
-  outline: 1px solid gray;
+  // outline: 1px solid gray;
   width: 100px;
 }
 
 footer {
-  // outline: 1px solid gray;
-  height: 60px;
+  height: 40px;
 }
 // #topページのスライドレイアウト用
 .container {
@@ -64,20 +59,27 @@ footer {
 }
 
 
-.pagination>li>a {          
+.pagination>li>a {
   border: none;     /*枠線をなくす*/
   color: #696969;   /*文字の色を変える*/
 }
 
 /* 表示しているページ番号のデザイン */
-.pagination>.active>a {     
+.pagination>.active>a {
   background: #93c9ff;     /*背景の色を変える*/
   border-radius: 15px;     /*角を丸くする*/
 }
 
 /*ホバー時のデザイン*/
-.pagination>li>a:hover {        
+.pagination>li>a:hover {
   border-radius: 15px;    /*角を丸くする*/
+}
+.like-btn {
+  color: #8899a6;
+}
+
+.like-btn-unlike {
+  color: #ff2581;
 }
 
 @media screen and (max-width: 900px) {

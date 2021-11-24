@@ -1,4 +1,5 @@
 class Post < ApplicationRecord
+  belongs_to :maker
 
   #PostモデルにUserモデルを関連付ける
   belongs_to :user
@@ -6,7 +7,7 @@ class Post < ApplicationRecord
   attachment :car_image
   #PostモデルとCarCommentモデルを関連付ける
   has_many :car_comments, dependent: :destroy
-  
+
   #いいね機能でPostモデルに関連付けを追加する
   has_many :favorites, dependent: :destroy
   # addressカラムを基準に緯度経度を算出する。
