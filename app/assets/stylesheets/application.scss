@@ -17,7 +17,6 @@
  @import 'font-awesome-sprockets';
  @import 'font-awesome';
 
-
 body {
   // width: 1000px; /*#固定幅調整*/
   margin: 0 auto; /*#固定幅調整*/
@@ -32,6 +31,7 @@ header {
 
 div {
   display: flex;
+  padding-bottom: 30px; 
   flex: 1;
 }
 li {
@@ -41,21 +41,21 @@ main {
   flex: 1;
 }
 nav {
-  // outline: 1px solid gray;
-  width: 100px;
+  width: 50px;
 }
 
 aside {
-  // outline: 1px solid gray;
-  width: 100px;
+  width: 50px;
 }
 
 footer {
-  height: 40px;
+  height: 60px;
 }
 // #topページのスライドレイアウト用
 .container {
   height: 100px;
+  display: flex;
+  flex-direction: column;
 }
 
 

@@ -3,27 +3,21 @@
           <aside></aside>
             <main>
               <h1>絶景スポット</h1>
-                    <input id="address" type="textbox" value="GeekSalon">
-                    <input type="button" value="Encode" onclick="codeAddress()">
+                    <!--<input id="address" type="textbox" value="GeekSalon">-->
+                    <!--<input type="button" value="Encode" onclick="codeAddress()">-->
                     <div id='map'></div>
-
                     <style>
                     #map {
                       height: 700px;
                       width: 100%;
                     }
                     </style>
-
                   <script>
-
                   let map
                   let geocoder
                   let marker = []; // マーカーを複数表示させたいので、配列化
                   let infoWindow = []; // 吹き出しを複数表示させたいので、配列化
                   const users = gon.users; // コントローラーで定義したインスタンス変数を変数に代入
-
-
-
                     // #宣言
                   function initMap(){
                       geocoder = new google.maps.Geocoder()
@@ -38,7 +32,7 @@
                           // #マップの中心のズーム率
                           zoom: 10,
                       });
-
+                      
                       marker = new google.maps.Marker({
                         // コントローラーで定義した変数から緯度経度を呼び出し、マーカーを立てる
                         position: {
@@ -48,9 +42,6 @@
                             // #26行目のmapを引き出している
                         map: map
                       });
-
-
-
 
                     function codeAddress(){
 
@@ -75,7 +66,7 @@
                             infoWindow[i] = new google.maps.InfoWindow({
                             // contentで中身を指定
                             // 今回は文字にリンクを貼り付けた形で表示
-                            content: `<a href='/users/${id}'>${users[i].email}</a>`
+                            content: `<a href='/posts/${id}'>＞投稿詳細ページ＜</a>`
                             });
                             // markerがクリックされた時、
                             marker[i].addListener("click", function(){

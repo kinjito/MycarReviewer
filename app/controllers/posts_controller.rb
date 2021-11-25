@@ -20,9 +20,12 @@ class PostsController < ApplicationController
     @post = Post.new
   end
 
-  # def edit
-  #   @post = Post.find(params[:id])
-  # end
+  def edit
+    @post = Post.find_by(id: params[:id])
+
+
+
+  end
 
   def create
     #投稿内容の保存
@@ -35,11 +38,20 @@ class PostsController < ApplicationController
 
   def map
     @post = Post.last
-    #postの一番最新のぶんをとってる
+    #postの一番最新の情報をとってくる
     # gon.user = @post # 追記
     @posts = Post.all
     gon.users = @posts
   end
+
+  def update
+    @post = Post.find_by(id: params[:id])
+    @post.update(post_params)
+    redirect_to post_path(@post)
+  end
+
+
+
 
   def destroy
     @post = Post.find(params[:id])

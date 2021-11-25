@@ -5,19 +5,18 @@
         <title>MycarReviewer</title>
         <%= csrf_meta_tags %>
         <%= csp_meta_tag %>
-
         <!--マップ機能-->
         <%= include_gon %>
-
         <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
         <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-
     </head>
-    
     <body>
         <header class="sticky-top navbar navbar-expand navbar-light bg-transparent">
                 <div class="container">
                     <a class="navbar-brand"><%= link_to (root_path) do%><%= image_tag ('logo1.png') %><% end %></a>
+                    
+                    
+ 
                     <div class="collapse navbar-collapse " id="navbar-transparent">
                         <ul class="navbar-nav ml-auto">
                             <li class="nav-item"><a class="nav-link fas fa-home" href="/posts">Home</a></li>
@@ -34,12 +33,12 @@
                     </div>
                 </div>
         </header>
-        
-    <%= yield %>
         <footer class="fixed-bottom bg-dark bg-transparent">
-            <center>
-                <!--< %= link_to (posts_path) do %>< %= image_tag ('logo1.png') %>< % end %>-->
-                お問い合わせ先は<%= mail_to 'destiniyfreedom@gmail.com', 'こちら'%></center>
+                            <center>
+                                <%= link_to (posts_path) do %><%= image_tag ('logo1.png') %><% end %>
+                                お問い合わせ先は<%= mail_to 'destiniyfreedom@gmail.com', 'こちら'%>
+                            </center>
         </footer>
+    <%= yield %>
     </body>
 </html>
