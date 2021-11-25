@@ -13,22 +13,22 @@
                   <div class = 'form-group fas fa-id-card'>
                     <%= f.label :image, "プロフィール画像" %>
                     <%= f.attachment_field :image, autofocus: true %>
-                  </div>
+                  </div></br>
 
                   <div class = 'form-group fas fa-user'>
                     <%= f.label :name, "ユーザー名" %>
                     <%= f.text_field :name, autofocus: true, class: "form-control", placeholder: "最大10文字", maxlength: 10 %>
-                  </div>
+                  </div></br>
 
                   <div class = 'form-group fas fa-envelope'>
                     <%= f.label :email, "メールアドレス" %>
                     <%= f.email_field :email, autocomplete: "email", class: "form-control", placeholder: "xxx@email.com" %>
-                  </div>
+                  </div></br>
 
                   <div class = 'form-group fas fa-comment-alt'>
                     <%= f.label :self_introduction, "自己紹介文" %>
                     <%= f.text_area :self_introduction, autofocus: true, class: "form-control", placeholder: "自己紹介文"%>
-                  </div>
+                  </div></br>
 
                   <div class="form-group fas fa-lock">
                     <%= f.label :password, "パスワード" %>
@@ -36,22 +36,21 @@
                     <em>(半角英数<%= @minimum_password_length %>文字以上)</em>
                     <% end %>
                     <%= f.password_field :password, autocomplete: "new-password", class: "form-control", placeholder: "半角英数6文字以上"  %>
-                  </div>
-
+                  </div></br>
 
                   <div class="form-group fas fa-lock">
                     <%= f.label :password_confirmation, "パスワード変更(確認)" %>
                     <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control", placeholder: "再度ご入力ください" %>
-                  </div>
+                  </div></br>
 
                   <div class="actions">
                     <%= f.submit "新規登録", class: "btn btn-success" %>
                   </div>
                 <% end %>
+                </div>
               </div>
-            </div>
-          </div>
-        </main>
+        </div>
+      </main>
       <aside></aside>
     </div>
 </body>

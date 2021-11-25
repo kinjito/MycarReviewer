@@ -1,12 +1,10 @@
 class PostsController < ApplicationController
 
   def index
-    #投稿内容一覧表示
-    # @posts = Post.all
     #検索機能
     @q = Post.ransack(params[:q])
+    #投稿内容一覧表示
     @posts = @q.result(distinct: true).page(params[:page]).reverse_order
-
   end
 
   def show
@@ -23,14 +21,11 @@ class PostsController < ApplicationController
   def edit
     @post = Post.find_by(id: params[:id])
 
-
-
   end
 
   def create
     #投稿内容の保存
     @post = Post.new(post_params)
-
     @post.user_id = current_user.id
     @post.save
     redirect_to posts_path
@@ -39,7 +34,6 @@ class PostsController < ApplicationController
   def map
     @post = Post.last
     #postの一番最新の情報をとってくる
-    # gon.user = @post # 追記
     @posts = Post.all
     gon.users = @posts
   end

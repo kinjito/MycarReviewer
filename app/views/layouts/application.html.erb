@@ -1,5 +1,9 @@
 <!DOCTYPE html>
 <html>
+    
+    <!--/Font Awesome Animation-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome-animation/0.2.1/font-awesome-animation.css" type="text/css" media="all" />
+    
     <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
     <head>
         <title>MycarReviewer</title>
@@ -14,31 +18,29 @@
         <header class="sticky-top navbar navbar-expand navbar-light bg-transparent">
                 <div class="container">
                     <a class="navbar-brand"><%= link_to (root_path) do%><%= image_tag ('logo1.png') %><% end %></a>
-                    
-                    
  
                     <div class="collapse navbar-collapse " id="navbar-transparent">
                         <ul class="navbar-nav ml-auto">
-                            <li class="nav-item"><a class="nav-link fas fa-home" href="/posts">Home</a></li>
-                            <li class="nav-item"><a class="nav-link fas fa-map-marker-alt" href="/posts/map" data-turbolinks="false">絶景スポット情報</a></li>
-                            <li class="nav-item"><a class="nav-link fas fa-car" href="/users/charm">魅力について</a></li>
+                            <li class="nav-item"><a class="nav-link fas fa-home faa-bounce animated-hover" href="/posts">Home</a></li>
+                            <li class="nav-item"><a class="nav-link fas fa-map-marker-alt faa-bounce animated-hover" href="/posts/map" data-turbolinks="false">絶景スポット情報</a></li>
+                            <li class="nav-item"><a class="nav-link fas fa-car faa-bounce animated-hover" href="/users/charm">魅力について</a></li>
                         <% if user_signed_in? %>
-                            <li class="nav-item"><a class="nav-link fas fa-user" href="/users/edit">マイページ</a></li>
-                            <li class="nav-item"><a class="nav-link fas fa-sign-out-alt" data-method="delete" href="/users/sign_out">ログアウト</a></li>
+                            <li class="nav-item"><a class="nav-link fas fa-user faa-bounce animated-hover" href="/users/edit">マイページ</a></li>
+                            <li class="nav-item"><a class="nav-link fas fa-sign-out-alt faa-bounce animated-hover" data-method="delete" href="/users/sign_out">ログアウト</a></li>
                         <% else %>
-                            <li class="nav-item"><a class="nav-link fas fa-sign-in-alt" href="/users/sign_in">ログイン</a></li>
-                            <li class="nav-item"><a class="nav-link fas fa-external-link-alt" href="/users/sign_up">サインアップ</a></li>
+                            <li class="nav-item"><a class="nav-link fas fa-sign-in-alt faa-bounce animated-hover" href="/users/sign_in">ログイン</a></li>
+                            <li class="nav-item"><a class="nav-link fas fa-external-link-alt faa-bounce animated-hover" href="/users/sign_up">サインアップ</a></li>
                         <% end %>
                         </ul>
                     </div>
                 </div>
         </header>
-        <footer class="fixed-bottom bg-dark bg-transparent">
-                            <center>
-                                <%= link_to (posts_path) do %><%= image_tag ('logo1.png') %><% end %>
-                                お問い合わせ先は<%= mail_to 'destiniyfreedom@gmail.com', 'こちら'%>
-                            </center>
-        </footer>
     <%= yield %>
+        <footer class="fixed-bottom bg-dark bg-transparent">
+            <center>
+                <%= link_to (posts_path) do %><%= image_tag ('logo1.png') %><% end %>
+                    お問い合わせ先は<%= mail_to 'destiniyfreedom@gmail.com', 'こちら'%>
+            </center>
+        </footer>
     </body>
 </html>

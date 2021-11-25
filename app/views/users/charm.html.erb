@@ -1,41 +1,48 @@
 <body>
   <div>
     <nav></nav>
-      <main>
+      <main class="container">
         <h1 class="form-title">車の魅力について語ろう！</h1>
-        <div class="container">
-          <div class="row">
-            <!--<div class="col-md-6 col-md-offset-3 form-wrapper">-->
-              <% if user_signed_in? %>
-                <% @themes.each do |theme| %>
-                  <div>
-                      <p>
-                          テーマ: <%= theme.theme_text %></br>
-                          コメント件数：<%= theme.theme_comments.size %></br>
-                        <% theme.theme_comments.each do |theme_comment| %>
-                          コメント：<%= theme_comment.comment_text %></br>
-                          ユーザー名：<%= theme_comment.user.name %></br>
-                          投稿日時：<%= theme_comment.created_at.strftime('%Y/%m/%d') %></br>
+        <p class="lead">昨今、若者の車離れが激しい世の中を少しでも変えるため、所有して良かったことや問題点を語り合うページです！</p>
+            <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+              <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+            <% if user_signed_in? %>
+          
+            <% @themes.each do |theme| %>
+                <div class="col">
+                  <div class="card mb-4 shadow-sm">
+                    <div class="card-header">
+                      <h4 class="my-0 fw-normal">テーマ:<%= theme.theme_text %></h4>
+                    </div>
+                    <div class="card-body">
+                      <ul class="list-unstyled mt-3 mb-4">
+                        <li>コメント件数：<%= theme.theme_comments.size %></li></br>
+                      <% theme.theme_comments.each do |theme_comment| %>
+                  
+                        <li>コメント：<%= theme_comment.comment_text %></li></br>
+                        <li>ユーザー名：<%= theme_comment.user.name %></li>
+                        <li>投稿日時：<%= theme_comment.created_at.strftime('%Y/%m/%d') %></li></br>
+            
                         <% if theme_comment.user.id == current_user.id %>
-                          <%= link_to "コメント削除", user_theme_comment_path(theme_comment.user_id,theme_comment.id), method: :delete, class: "btn btn-danger" %>
+                        <li><%= link_to "コメント削除", user_theme_comment_path(theme_comment.user_id,theme_comment.id), method: :delete, class: "btn btn-danger" %></li></br>
                         <% end %>
                       <% end %>
-                      </p>
+                        <%= form_with(model:[@user,@theme_comment], local: true) do |f| %>
+                                    <!--#テーマを二つ別に持たせた状態で表示させる-->
+                        <%= f.hidden_field :theme_id, :value => theme.id %>
+                                      <!--##-->
+                        <%= f.text_area :comment_text, rows:'5',placeholder: "コメントをここに", class: "form-control" %></br>
+                        <%= f.submit "送信する",class: "btn btn-success" %>
+                        <% end %>
+                      </ul>
                     </div>
-                  <div>
-                    <%= form_with(model:[@user,@theme_comment], local: true) do |f| %>
-                              <!--#テーマを二つ別に持たせた状態で表示させる-->
-                      <%= f.hidden_field :theme_id, :value => theme.id %>
-                                <!--##-->
-                      <%= f.text_area :comment_text, rows:'5',placeholder: "コメントをここに" %></br>
-                      <%= f.submit "送信する",class: "btn btn-success" %>
-                    <% end %>
                   </div>
-                <% end %>
-              <% end %>
-            <!--</div>-->
-          </div>
-        </div>
+                </div>
+            <% end %>
+            <% end %>
+              </div>
+            </div>
+            
       </main>
     <aside></aside>
   </div>

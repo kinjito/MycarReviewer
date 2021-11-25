@@ -2,51 +2,56 @@
   <div>
     <nav></nav>
       <main>
-        <div class="jumbotron text-center hero">
+        <section class="jumbotron text-center hero">
           <li>
             <h1>車を所有して、自由に色んな場所に駆け抜ける喜びを共有しよう!</h1>
             <p>MycarReviewerでは、車の魅力を伝え、車を所有して良かったことを共感し合えるサイトです。</p>
           </li>
-        </div>
-         
-            <% if user_signed_in? %>
-              <%= link_to  "新規投稿画面へ", new_post_path, class: "btn btn-success" %>
-            <% end %>
-              <li><%= paginate @posts %></li>
-            <%= search_form_for @q do |f| %>
-              <center>
-                <%= f.search_field :car_name_or_comment_cont,placeholder: "キーワード検索" %>
-                <%= f.select :maker_id_eq, options_from_collection_for_select(Maker.all, :id, :maker_name , 1) %>
-                <%= f.submit "検索" %>
-              </center>
-            <% end %></br>
+        </section>
+          <% if user_signed_in? %>
+          <%= link_to  "新規投稿画面へ", new_post_path, class: "btn btn-success" %>
+          <% end %>
+            <li><%= paginate @posts %></li>
+          <%= search_form_for @q do |f| %>
+          <div class="input-group">
+                <span class="input-group-btn input-group-append">
+                  <%= f.search_field :car_name_or_comment_cont,placeholder: "キーワード検索", class: "form-control input-group-prepend" %>
+                  <%= f.select :maker_id_eq, options_from_collection_for_select(Maker.all, :id, :maker_name , 1) %>
+                  <%= f.submit "検索",class: "btn btn-primary"%>
+                </span>
+          </div>
+          <% end %>
+        
             <div class="container">
-              <div class="row row-cols-1 row-cols-sm-2">
-                <div class="col">
-                <% @posts.each do |post| %>
-                      <p>
+            <% @posts.each do |post| %>
+              <div class="row">
+                <div class="col col-md-4">
+                  <div class="card mb-4 shadow-sm">
                         <%= link_to post_path(post.id) do %>
-                        <%= attachment_image_tag post,:car_image,format: 'jpeg',fallback: "no_image.jpg",size: "200x200" %>
+                        <%= attachment_image_tag post,:car_image,format: 'jpeg',fallback: "no_image.jpg",size: "600x200",class: "card-img-top" %>
                         <% end %>
+                    <div class="card-body">
+                      <p class="card-text">
                         車の名前:<%= post.car_name %></br>
                         写真の内容について:<%= post.detail %></br>
                         <% if user_signed_in? %>
                           <% if current_user != post.user %>
-                        
                             <% if current_user.following?(post.user) %>
                                 <%= link_to 'フォロー外す', user_relationships_path(post.user.id), method: :delete, class: "btn btn-secondary"%>
                             <% else %>
                                 <%= link_to 'フォローする', user_relationships_path(post.user.id), method: :POST , class: "btn btn-primary"%>
                             <% end %>
-                         
                           <% end %>
-                          <div id="favorite-btn_<%= post.id %>"><%= render 'favorites/favorite-btn', post: post %></div>
+                        <div id="favorite-btn_<%= post.id %>"><%= render 'favorites/favorite-btn', post: post %></div>
                         <% end %>
                       </p>
-                <% end %>
+                    </div>
+                  </div>
                 </div>
               </div>
+            <% end %>
             </div>
+      
       </main>
     <aside></aside>
   </div>

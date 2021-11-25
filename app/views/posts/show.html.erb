@@ -9,7 +9,7 @@
                     <div class="card-body">
                       <p class="card-title">車種名:<%= @post.car_name %></p>
                     </div>
-                     <ul class="list-group list-group-flush">
+                    <ul class="list-group list-group-flush">
                       <li class="list-group-item">写真詳細：<%= number_to_human_size (@post.car_image_size) %>：<%= @post.car_image_filename %></li>
                       <li class="list-group-item">投稿日時：<%= @post.created_at.strftime('%Y/%m/%d') %></li>
                       <li class="list-group-item">いいね数：<%= @post.favorites.count %> コメント件数：<%= @post.car_comments.count %></li>
@@ -24,12 +24,14 @@
                       <li class="list-group-item"><%= link_to "コメント削除", post_car_comment_path(car_comment.post, car_comment), method: :delete, class: "btn btn-danger" %></li>
                       <% end %>
                       <% end %>
-                      <% if @post.user == current_user %>
                       <li class="list-group-item">
+                      <% if user_signed_in? %>
                       <%= form_with(model:[@post, @car_comment], local: true) do |f| %>
                         <%= f.text_area :post_comment, autofocus: true, rows:'5',placeholder: "コメントをここに", class: "form-control" %>
                       <%= f.submit "送信する", class: "btn btn-success" %>
                       <% end %>
+                      <% end %>
+                      <% if @post.user == current_user %>
                       </li>
                     </ul>
                       <div class="card-body">

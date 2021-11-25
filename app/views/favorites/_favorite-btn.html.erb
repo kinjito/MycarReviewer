@@ -1,15 +1,14 @@
                       <!--#いいね機能-->
                         <% if post.favorited_by?(current_user) %>
-                        <span class="fa fa-heart like-btn-unlike">
-                        <%= link_to post_favorites_path(post), method: :delete, remote: true,  class: "favorite-btn" do %>
+                        <span class="fa fa-heart faa-float animated-hover like-btn-unlike">
+                        <%= link_to post_favorites_path(post), method: :delete, remote: true do %>
                           <%= post.favorites.count %>いいね
                         <% end %>
-                        </span> 
+                        </span>
                         <% else %>
-                        <span class="fa fa-heart like-btn">
-                        <%= link_to post_favorites_path(post), method: :post, remote: true, class: "favorite-btn" do %>
+                        <span class="fa fa-heart faa-float animated-hover like-btn">
+                        <%= link_to post_favorites_path(post), method: :post, remote: true do %>
                           <%= post.favorites.count %>いいね
                         <% end %>
                         </span>
                         <% end %>
-                   

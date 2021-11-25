@@ -15,7 +15,7 @@
                     <%= f.attachment_field :image %></br>
                     name: <%= resource.image_filename %></br>
                     size: <%= number_to_human_size(resource.image_size) %>
-                  </div>
+                  </div></br>
                   <div class = 'form-group fas fa-user'>
                     <%= f.label :name, "ユーザー名" %>
                     <%= f.text_field :name, autofocus: true, class: "form-control", placeholder: "最大10文字", maxlength: 10 %>
@@ -23,11 +23,11 @@
                   <div class = 'form-group fas fa-envelope'>
                     <%= f.label :email, "メールアドレス" %>
                     <%= f.email_field :email, autocomplete: "email", class: "form-control", placeholder: "xxx@email.com" %>
-                  </div>
+                  </div></br>
                   <div class = 'form-group fas fa-comment-alt'>
                     <%= f.label :self_introduction, "自己紹介文" %>
                     <%= f.text_area :self_introduction, class: "form-control", placeholder: "自己紹介文" %>
-                  </div>
+                  </div></br>
                   <div><%= f.submit "更新する（パスワード変更）", class: "btn btn-primary" %></div>
                 <% end %>
             </div>
