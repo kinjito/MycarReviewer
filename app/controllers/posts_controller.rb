@@ -4,7 +4,7 @@ class PostsController < ApplicationController
     #検索機能
     @q = Post.ransack(params[:q])
     #投稿内容一覧表示
-    @posts = @q.result(distinct: true).page(params[:page]).reverse_order
+    @posts = @q.result(distinct: true).page(params[:page]).reverse_order.per(6)
   end
 
   def show
@@ -27,8 +27,11 @@ class PostsController < ApplicationController
     #投稿内容の保存
     @post = Post.new(post_params)
     @post.user_id = current_user.id
-    @post.save
-    redirect_to posts_path
+    if @post.save
+      redirect_to posts_path
+    else
+      render :new
+    end
   end
 
   def map

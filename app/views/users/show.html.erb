@@ -32,6 +32,7 @@
                           <td><%= @user.self_introduction %></td>
                         </tr>
                       </tbody>
+                      <span><%= link_to "一覧ページへ戻る", posts_path, class: "btn btn-secondary" %></span>
                     </table>
                     <span><%= link_to 'パスワードの変更はこちら', update_password_path %></span>
                   </dl>

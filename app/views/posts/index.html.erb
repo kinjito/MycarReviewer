@@ -1,31 +1,32 @@
 <body>
   <div>
-    <nav></nav>
+    <!--<nav></nav>-->
       <main>
-        <section class="jumbotron text-center hero">
+        <div class="jumbotron text-center hero">
           <li>
-            <h1>車を所有して、自由に色んな場所に駆け抜ける喜びを共有しよう!</h1>
+            <h1>車を所有して、</br>自由に色んな場所に駆け抜ける喜びを共有しよう!</h1>
             <p>MycarReviewerでは、車の魅力を伝え、車を所有して良かったことを共感し合えるサイトです。</p>
           </li>
-        </section>
-          <% if user_signed_in? %>
-          <%= link_to  "新規投稿画面へ", new_post_path, class: "btn btn-success" %>
-          <% end %>
-            <li><%= paginate @posts %></li>
-          <%= search_form_for @q do |f| %>
-          <div class="input-group">
-                <span class="input-group-btn input-group-append">
-                  <%= f.search_field :car_name_or_comment_cont,placeholder: "キーワード検索", class: "form-control input-group-prepend" %>
-                  <%= f.select :maker_id_eq, options_from_collection_for_select(Maker.all, :id, :maker_name , 1) %>
-                  <%= f.submit "検索",class: "btn btn-primary"%>
-                </span>
+        </div>
+          <div class="video-wrap">
+                <%= video_tag("/videos/sample.mp4", :autoplay => true, :loop => true, muted: true) %>
           </div>
-          <% end %>
+            <li><%= paginate @posts %></li>
         
-            <div class="container">
+          <div class="container">
+            <%= search_form_for @q do |f| %>
+            <div class="input-group">
+                  <span class="input-group-btn input-group-append">
+                    <%= f.search_field :car_name_or_comment_cont,placeholder: "キーワード検索", class: "form-control input-group-prepend" %>
+                    <%= f.select :maker_id_eq, options_from_collection_for_select(Maker.all, :id, :maker_name , 1) %>
+                    <%= f.submit "検索",class: "btn btn-primary"%>
+                  </span>
+            </div>
+            <% end %>
+            <div class="row">
             <% @posts.each do |post| %>
-              <div class="row">
-                <div class="col col-md-4">
+            <!--4列ではなく3列にしたい場合は、col-lg-4、2列にしたい場合はcol-lg-6に指定します。-->
+                <div class="col-lg-4 col-md-6 mb-4">
                   <div class="card mb-4 shadow-sm">
                         <%= link_to post_path(post.id) do %>
                         <%= attachment_image_tag post,:car_image,format: 'jpeg',fallback: "no_image.jpg",size: "600x200",class: "card-img-top" %>
@@ -48,11 +49,10 @@
                     </div>
                   </div>
                 </div>
-              </div>
             <% end %>
             </div>
-      
+          </div>
       </main>
-    <aside></aside>
+    <!--<aside></aside>-->
   </div>
 </body>

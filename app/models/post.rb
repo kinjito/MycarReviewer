@@ -1,4 +1,11 @@
 class Post < ApplicationRecord
+
+
+  validates :detail, {presence: true, length: {maximum:150}}
+  validates :photo_address, presence: true
+  validates :car_name, presence: true
+  
+
   belongs_to :maker
 
   #PostモデルにUserモデルを関連付ける

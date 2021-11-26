@@ -4,6 +4,7 @@
       <main class="container">
         <h1 class="form-title">車の魅力について語ろう！</h1>
         <p class="lead">昨今、若者の車離れが激しい世の中を少しでも変えるため、所有して良かったことや問題点を語り合うページです！</p>
+         <p><%= link_to "一覧ページへ戻る", posts_path, class: "btn btn-secondary" %></p>
             <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
               <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
             <% if user_signed_in? %>

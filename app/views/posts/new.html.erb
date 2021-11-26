@@ -4,18 +4,27 @@
       <main>
         <div class="container">
         <h1 class="form-title">新規投稿画面</h1>
+        <p>
+          <% if @post.errors.any? %>
+            <%= @post.errors.count %>件のエラーが発生しました
+            <% @post.errors.full_messages.each do |message| %>
+              <%= message %>
+            <% end %>
+          <% end %>
+        </p>
             　<div class="row">
               　<div class="col-md-6 col-md-offset-3 form-wrapper">
-                <!-- form_with部分 -->
+             
                 <%= form_with model:@post, local:true do |f| %>
 
                   <div class = 'form-group fas fa-image'>
                     <%= f.label :car_image, "車の写真" %>
                     <%= f.attachment_field :car_image %>
                   </div></br>
-                  
+
                    <div class = 'form-group fas fa-car'>
                     <%= f.label :car_name, "車のメーカー" %>
+                    <!--#検索タブの記述-->
                     <%= f.select :maker_id, options_from_collection_for_select(Maker.all, :id, :maker_name , 1) %>
                   </div></br>
 
