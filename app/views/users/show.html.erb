@@ -1,45 +1,32 @@
+
 <body>
   <div>
     <nav></nav>
       <main>
-          <div class="container">
+        <div class="container">
             　<div class="row">
-              　<div class="col-md-6 col-md-offset-3 form-wrapper">
-                  <dl>
-                    <table class="table">
-                    <h1 class="form-title">アカウント情報詳細</h1>  
-                      <thead>
-                        <tr>
-                          <th>image</th>
-                          <th>name</th>
-                          <th>follower</th>
-                          <th>followed</th>
-                          <th>email</th>
-                          <th>self_introduction</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>
-                            <%= attachment_image_tag @user, :image, size: "100x100" %>
-                              name:<%= @user.image_filename %>
-                              size:<%= number_to_human_size(@user.image_size) %>
-                          </td>
-                          <td><%= @user.name %></td>
-                          <td><%= @user.follower.count %></td>
-                          <td><%= @user.followed.count %></td>
-                          <td><%= @user.email %></td>
-                          <td><%= @user.self_introduction %></td>
-                        </tr>
-                      </tbody>
-                      <span><%= link_to "一覧ページへ戻る", posts_path, class: "btn btn-secondary" %></span>
-                    </table>
-                    <span><%= link_to 'パスワードの変更はこちら', update_password_path %></span>
-                  </dl>
+              　<div class="card">
+                    <a class="card-img-top"><%= attachment_image_tag @user, :image, size: "300x300" %></a>
+                    <div class="card-body">
+                      <p class="card-title">アカウント情報詳細</p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                      <li class="list-group-item">写真詳細：<%= @user.image_filename %>：<%= number_to_human_size(@user.image_size) %></li>
+                      <li class="list-group-item">フォロワー数：<%= @user.follower.count %></li>
+                      <li class="list-group-item">フォロー数：<%= @user.followed.count %></li>
+                      <li class="list-group-item">メール:<%= @user.email %></li>
+                      <li class="list-group-item">自己紹介文:<%= @user.self_introduction %></li>
+                      <li class="list-group-item">ユーザー名:<%= @user.name %>
+                    </ul>
+                      <div class="card-body">
+                        <p><%= link_to "一覧ページへ戻る", posts_path, class: "btn btn-secondary" %></p>
+                        <p><%= link_to 'パスワードの変更はこちら', update_password_path, class: "btn btn-primary" %></p>
+                        <p><%= link_to '退会する', confirm_unsubscribe_path(@user), class: "btn btn-danger" %></p>
+                      </div>
                 </div>
               </div>
-            </div>
-        </main>
-      <aside></aside>
-    </div>
-  </body>
+        </div>
+      </main>
+    <aside></aside>
+  </div>
+</body>

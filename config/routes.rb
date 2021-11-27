@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
   root to: 'home#top'
+  get '/home/about' => "home#about"
+  
+  get 'unsubscribe/:name' => 'users#unsubscribe', as: 'confirm_unsubscribe'
+  patch ':id/withdraw/:name' => 'users#withdraw', as: 'withdraw_user'
+  put 'withdraw/:name' => 'users#withdraw'
 
   get '/users/:id/password' => "users#update_password", as: :update_password
   #post '/users/change_password' => "users#change_password", as: :change_password

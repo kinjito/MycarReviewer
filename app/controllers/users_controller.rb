@@ -17,6 +17,7 @@ class UsersController < ApplicationController
     @theme_comment = ThemeComment.new
   end
 
+  # パスワード変更設定
   def update_password
     @user = User.find(params[:id])
   end
@@ -34,7 +35,19 @@ class UsersController < ApplicationController
     @users = user.follower_user
         # .follower_userメソッド ：Userモデルで定義済
   end
+  
+  # 退会機能
+  def unsubscribe
+    @user = User.find_by(name: params[:name])
+  end
 
+  def withdraw
+    @user = User.find(current_user.id)
+    @user.update(is_valid: false)
+    reset_session
+    redirect_to root_path
+  end
+  # ＃
 
   def create
   end
@@ -44,7 +57,4 @@ class UsersController < ApplicationController
     @post.destroy
     redirect_to posts_path
   end
-
-
-
 end

@@ -1,10 +1,9 @@
 <body>
   <div>
-    <!--<nav></nav>-->
       <main>
         <div class="jumbotron text-center hero">
           <li>
-            <h1>車を所有して、</br>自由に色んな場所に駆け抜ける喜びを共有しよう!</h1>
+            <h1 class= "title">車を所有して、</br>自由に色んな場所に駆け抜ける喜びを共有しよう!</h1></br>
             <p>MycarReviewerでは、車の魅力を伝え、車を所有して良かったことを共感し合えるサイトです。</p>
           </li>
         </div>
@@ -21,7 +20,7 @@
                     <%= f.select :maker_id_eq, options_from_collection_for_select(Maker.all, :id, :maker_name , 1) %>
                     <%= f.submit "検索",class: "btn btn-primary"%>
                   </span>
-            </div>
+            </div></br>
             <% end %>
             <div class="row">
             <% @posts.each do |post| %>
@@ -53,6 +52,5 @@
             </div>
           </div>
       </main>
-    <!--<aside></aside>-->
   </div>
 </body>
