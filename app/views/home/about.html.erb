@@ -4,8 +4,8 @@
       <main>
       <div class="video-container">
         <div class="video-wrap">
-          <%= video_tag("/videos/sample.mp4", :autoplay => true, :loop => true, muted: true) %>
-          <center>
+          <%= video_tag(asset_path("sample.mp4"), :autoplay => true, :loop => true, muted: true) %>
+          <div class="comment">
                     <p>このページでは、より車の魅力を少しでも知ってほしいと思い受けました！</p>
                     <p>車に少しでも興味を持っていただけた方におすすめのポイントを紹介しようと思います。</p>
                     <p>維持費の方は、正直かかってきてしまうのでコストはかかるのですが、それ以上に楽しさや良さがあります！</p>
@@ -16,21 +16,21 @@
                     <p>・第二の自宅、自由な空間！</p>
                     <p>・好きな音楽を家で聴くのとは、また違う感覚で聞ける！</p>
                     <p>個人的な意見ですが、もし車を購入する際は、なんとなく選ばず必ずほしい！と思える車を買ってほしいです！</p>
-                    
-                    
+
+
                     <p>車ってやっぱり維持費がかかったりするのが・・</br>
                     って方におすすめなのがカーシェアリングです。ごく一部ですがご紹介させていただきます！</p>
                     <%= link_to 'タイムズカーシェア', 'https://share.timescar.jp/' %>
                     <%= link_to 'Anyca', 'https://anyca.net/' %>
                     <%= link_to 'EveryGo', 'https://everygo.honda.co.jp/' %>
-          
-          </center>
+
+          </div>
         </div>
       </div>
       </main>
   </div>
 </body>
-		
+
 
 
 

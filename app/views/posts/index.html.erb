@@ -1,4 +1,4 @@
-<body>
+
   <div>
       <main>
         <div class="jumbotron text-center hero">
@@ -8,10 +8,10 @@
           </li>
         </div>
           <div class="video-wrap">
-                <%= video_tag("/videos/sample.mp4", :autoplay => true, :loop => true, muted: true) %>
+            <%= video_tag(asset_path("sample.mp4"), :autoplay => true, :loop => true, muted: true) %>
           </div>
             <li><%= paginate @posts %></li>
-        
+
           <div class="container">
             <%= search_form_for @q do |f| %>
             <div class="input-group">
@@ -53,4 +53,3 @@
           </div>
       </main>
   </div>
-</body>
