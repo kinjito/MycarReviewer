@@ -1,9 +1,9 @@
-      <body>
-        <div>
-          <aside></aside>
-            <main>
-              <h1>絶景スポット</h1>
-                <p>このページでは、投稿されたスポットの場所を詳しく見れます！</p>
+
+            <div>
+              </br>
+               </br>
+                </br>
+                <h1>このページでは、投稿された絶景スポットの場所を詳しく見れます！</h1>
                   <span><%= link_to "一覧ページへ戻る", posts_path, class: "btn btn-secondary" %></span>
                     <div id='map'></div>
                     <style>
@@ -32,7 +32,7 @@
                           // #マップの中心のズーム率
                           zoom: 10,
                       });
-                      
+
                       marker = new google.maps.Marker({
                         // コントローラーで定義した変数から緯度経度を呼び出し、マーカーを立てる
                         position: {
@@ -77,9 +77,6 @@
                 }
                   </script>
                     <!--#mapをグーグルから読み込んでいる-->
-                <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-qnvFteh0WMWGbOVDz8Xq2PFBrIc5-_E&callback=initMap" async defer></script>
-                                                                                                                <!--#自動で呼び出してもらってる-->
-              </main>
-            <aside></aside>
-        </div>
-      </body>
+                <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-qnvFteh0WMWGbOVDz8Xq2PFBrIc5-_E&callback=initMap" async defer></script>                                                                                                     <!--#自動で呼び出してもらってる-->
+            </div>
+

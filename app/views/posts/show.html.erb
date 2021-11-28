@@ -1,7 +1,6 @@
 
 <div class="container fill">
-　 <p><%= link_to "一覧ページへ戻る", posts_path, class: "btn btn-secondary" %></p>
-　<div class="card" style="width: 18rem;">
+　<div class="card" style="width: 40rem;">
       <a href="<%= @post.car_image_url %>" target="_blank"　class="card-img-top"><%= attachment_image_tag @post,:car_image,format: 'jpeg',fallback: "no_image.jpg",size: "800x400",class: "card-img-top" %></a>
       <div class="card-body">
         <p class="card-title">車種名:<%= @post.car_name %></p>
@@ -37,6 +36,7 @@
           <a><%= link_to "投稿削除", post_path(@post), method: :delete, class: "btn btn-danger" %></a>
         </div>
       <% end %>
+　   <p><%= link_to "一覧ページへ戻る", posts_path, class: "btn btn-secondary" %></p>
   </div>
 </div>
 

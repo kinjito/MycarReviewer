@@ -45,6 +45,7 @@
                 </div>
             </header>
             <%= yield %>
+            <!--topページのみフッターを表示させない記述-->
             <% unless controller_name == "home" && controller.action_name == "top" %>
                 <footer class="footer bg-dark bg-transparent">
                     <center>

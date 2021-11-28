@@ -1,15 +1,7 @@
 
-<body>
-  <div>
-    <nav></nav>
-      <main>
-        <div class="container"></br>
+        <div class="container fill"></br>
         <h1 class="form-title">本当に退会しますか？</h1>
           <p>退会する場合は、『退会する』をクリックしてください。</p>
             <p><%= link_to '退会しない', posts_path, class: "btn btn-primary" %></p>
             <p><%= link_to "退会する", withdraw_user_path(current_user), method: :patch, class: "btn btn-danger" %></p>
         </div>
-      </main>
-    <aside></aside>
-  </div>
-</body>
