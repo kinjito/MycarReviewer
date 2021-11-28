@@ -80,9 +80,11 @@ video {
   // display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
+  //overflow: hidden;
   width: 100%;
-  margin-left: 100px;
+  //margin-left: 100px;
+  height: 700px;
+  overflow: scroll;
 }
 
 .pagination-tab {

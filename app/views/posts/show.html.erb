@@ -1,51 +1,43 @@
-<body>
-  <div>
-    <nav></nav>
-      <main>
-        <div class="container">
-            　<div class="row">
-              　 <p><%= link_to "一覧ページへ戻る", posts_path, class: "btn btn-secondary" %></p>
-              　<div class="card" style="width: 18rem;">
-                    <a href="<%= @post.car_image_url %>" target="_blank"　class="card-img-top"><%= attachment_image_tag @post,:car_image,format: 'jpeg',fallback: "no_image.jpg",size: "800x400",class: "card-img-top" %></a>
-                    <div class="card-body">
-                      <p class="card-title">車種名:<%= @post.car_name %></p>
-                    </div>
-                    <ul class="list-group list-group-flush">
-                      <li class="list-group-item">写真詳細：<%= number_to_human_size (@post.car_image_size) %>：<%= @post.car_image_filename %></li>
-                      <li class="list-group-item">投稿日時：<%= @post.created_at.strftime('%Y/%m/%d') %></li>
-                      <li class="list-group-item">いいね数：<%= @post.favorites.count %> コメント件数：<%= @post.car_comments.count %></li>
-                      <li class="list-group-item">写真の住所:<%= @post.photo_address %></li>
-                      <li class="list-group-item">写真の内容について:<%= @post.detail %></li>
-                      <li class="list-group-item">カスタマイズポイント:<%= @post.comment %></li>
-                      <% @post.car_comments.each do |car_comment| %>
-                      <li class="list-group-item">コメント:<%= car_comment.post_comment %></li>
-                      <li class="list-group-item">ユーザー名:<%= car_comment.user.name %></li>
-                      <li class="list-group-item">投稿日時:<%= car_comment.created_at.strftime('%Y/%m/%d') %></li>
-                      <% if car_comment.user == current_user %>
-                      <li class="list-group-item"><%= link_to "コメント削除", post_car_comment_path(car_comment.post, car_comment), method: :delete, class: "btn btn-danger" %></li>
-                      <% end %>
-                      <% end %>
-                      <li class="list-group-item">
-                      <% if user_signed_in? %>
-                      <%= form_with(model:[@post, @car_comment], local: true) do |f| %>
-                        <%= f.text_area :post_comment, autofocus: true, rows:'5',placeholder: "コメントをここに", class: "form-control" %>
-                      <%= f.submit "送信する", class: "btn btn-success" %>
-                      <% end %>
-                      <% end %>
-                      <% if @post.user == current_user %>
-                      </li>
-                    </ul>
-                      
-                      <div class="card-body">
-                        <a><%= link_to "編集", edit_post_path(@post),class: "btn btn-primary" %></a>
-                        <a><%= link_to "投稿削除", post_path(@post), method: :delete, class: "btn btn-danger" %></a>
-                      </div>
-                    <% end %>
-                </div>
-              </div>
+
+<div class="container fill">
+　 <p><%= link_to "一覧ページへ戻る", posts_path, class: "btn btn-secondary" %></p>
+　<div class="card" style="width: 18rem;">
+      <a href="<%= @post.car_image_url %>" target="_blank"　class="card-img-top"><%= attachment_image_tag @post,:car_image,format: 'jpeg',fallback: "no_image.jpg",size: "800x400",class: "card-img-top" %></a>
+      <div class="card-body">
+        <p class="card-title">車種名:<%= @post.car_name %></p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">写真詳細：<%= number_to_human_size (@post.car_image_size) %>：<%= @post.car_image_filename %></li>
+        <li class="list-group-item">投稿日時：<%= @post.created_at.strftime('%Y/%m/%d') %></li>
+        <li class="list-group-item">いいね数：<%= @post.favorites.count %> コメント件数：<%= @post.car_comments.count %></li>
+        <li class="list-group-item">写真の住所:<%= @post.photo_address %></li>
+        <li class="list-group-item">写真の内容について:<%= @post.detail %></li>
+        <li class="list-group-item">カスタマイズポイント:<%= @post.comment %></li>
+        <% @post.car_comments.each do |car_comment| %>
+        <li class="list-group-item">コメント:<%= car_comment.post_comment %></li>
+        <li class="list-group-item">ユーザー名:<%= car_comment.user.name %></li>
+        <li class="list-group-item">投稿日時:<%= car_comment.created_at.strftime('%Y/%m/%d') %></li>
+        <% if car_comment.user == current_user %>
+        <li class="list-group-item"><%= link_to "コメント削除", post_car_comment_path(car_comment.post, car_comment), method: :delete, class: "btn btn-danger" %></li>
+        <% end %>
+        <% end %>
+        <li class="list-group-item">
+        <% if user_signed_in? %>
+        <%= form_with(model:[@post, @car_comment], local: true) do |f| %>
+          <%= f.text_area :post_comment, autofocus: true, rows:'5',placeholder: "コメントをここに", class: "form-control" %>
+        <%= f.submit "送信する", class: "btn btn-success" %>
+        <% end %>
+        <% end %>
+        <% if @post.user == current_user %>
+        </li>
+      </ul>
+
+        <div class="card-body">
+          <a><%= link_to "編集", edit_post_path(@post),class: "btn btn-primary" %></a>
+          <a><%= link_to "投稿削除", post_path(@post), method: :delete, class: "btn btn-danger" %></a>
         </div>
-      </main>
-    <aside></aside>
+      <% end %>
   </div>
-</body>
+</div>
+
 
