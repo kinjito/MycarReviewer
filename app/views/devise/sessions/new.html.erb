@@ -1,24 +1,17 @@
-<body>
-  <div>
-    <nav></nav>
-      <main>
-          <div class="container">
+
+          <div class="container fill"></br>
             <h1 class="form-title">ログイン画面</h1>
             　<div class="row">
               　<div class="col-md-6 col-md-offset-3 form-wrapper">
-    
                   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-                 
                         <div class ='form-group fas fa-user'>
                           <%= f.label :name %>
                           <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
                         </div></br>
-                      
                         <div class ="form-group fas fa-lock">
                           <%= f.label :password %>
                           <%= f.password_field :password, autocomplete: "current-password" %>
                         </div></br>
-                      
                   <% if devise_mapping.rememberable? %>
                         <div class ="field">
                             <%= f.check_box :remember_me %>
@@ -31,7 +24,4 @@
                 </div>
               </div>
             </div>
-        </main>
-      <aside></aside>
-    </div>
-</body>
+

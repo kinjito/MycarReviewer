@@ -1,8 +1,5 @@
-<body>
-  <div>
-    <nav></nav>
-      <main>
-        <div class="container">
+
+      <div class="container fill"></br>
         <h1 class="form-title">新規投稿画面</h1>
         <p>
           <% if @post.errors.any? %>
@@ -13,50 +10,40 @@
           <% end %>
         </p>
           <div class="row">
-              　<div class="col-md-6 col-md-offset-3 form-wrapper">
-             
+              <div class="col-md-6 col-md-offset-3 form-wrapper">
                 <%= form_with model:@post, local:true do |f| %>
-
                   <div class = 'form-group fas fa-image'>
                     <%= f.label :car_image, "車の写真" %>
                     <%= f.attachment_field :car_image %>
                   </div></br>
-
-                   <div class = 'form-group fas fa-car'>
+                  <div class = 'form-group fas fa-car'>
                     <%= f.label :car_name, "車のメーカー" %>
                     <!--#検索タブの記述-->
                     <%= f.select :maker_id, options_from_collection_for_select(Maker.all, :id, :maker_name , 1) %>
                   </div></br>
-
                   <div class = 'form-group fas fa-car'>
                     <%= f.label :car_name, "車の名前" %>
                     <%= f.text_field :car_name, autofocus: true, class: "form-control", placeholder: "車種、車名" %>
                   </div></br>
-
                   <div class = 'form-group fas fa-comment-alt'>
                     <%= f.label :detail, "写真の内容について" %>
                     <%= f.text_area :detail, class: "form-control", placeholder: "どういった場所で撮影した記入" %>
                   </div></br>
-
                   <div class = 'form-group fas fa-map-marker-alt'>
                    <%= f.label :photo_address, "写真の住所" %>
                    <%= f.text_field :photo_address, class: "form-control", placeholder: "住所入力、場所の名称"  %>
                   </div></br>
-
                   <div class = 'form-group fas fa-hand-point-down'>
                    <%= f.label :comment, "カスタマイズポイント" %>
                    <%= f.text_area :comment, class: "form-control", placeholder: "愛車のアピールポイントを記載"  %>
                   </div></br>
-
                   <div>
                     <%= f.submit '投稿', class: "btn btn-success" %>
-                  </div>
+                  </div></br>
+                  <p><%= link_to "一覧ページへ戻る", posts_path, class: "btn btn-secondary" %></p>
                 <% end %>
-                </div>
+              </div>
           </div>
-        </div>
-      </main>
-      <aside></aside>
-    </div>
-</body>
+      </div>
+     
 
