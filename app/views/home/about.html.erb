@@ -1,35 +1,56 @@
 
-<body>
-  <div>
+
+ 
       <main>
-      <div class="video-container">
         <div class="video-wrap">
-          <%= video_tag(asset_path("sample.mp4"), :autoplay => true, :loop => true, muted: true) %>
-          <div class="comment">
-                    <p>このページでは、より車の魅力を少しでも知ってほしいと思い受けました！</p>
-                    <p>車に少しでも興味を持っていただけた方におすすめのポイントを紹介しようと思います。</p>
-                    <p>維持費の方は、正直かかってきてしまうのでコストはかかるのですが、それ以上に楽しさや良さがあります！</p>
-                    <p>単に移動の足として乗ることも、もちろんいいのですが、愛着を持って乗ることでより魅力を知ってもらえるかなと信じています！</p>
-                    <p>魅力なポイントを個人的に感じた部分ですが、一部ご紹介させていただきます！</p>
-                    <p>・運転が不安な方でも安心！<%= link_to "安全装備", 'https://jaf.or.jp/common/safety-drive/new-technology/asv' %>の充実</p>
-                    <p>・思い通りに操る楽しみ！</p>
-                    <p>・第二の自宅、自由な空間！</p>
-                    <p>・好きな音楽を家で聴くのとは、また違う感覚で聞ける！</p>
-                    <p>個人的な意見ですが、もし車を購入する際は、なんとなく選ばず必ずほしい！と思える車を買ってほしいです！</p>
-
-
-                    <p>車ってやっぱり維持費がかかったりするのが・・</br>
-                    って方におすすめなのがカーシェアリングです。ごく一部ですがご紹介させていただきます！</p>
-                    <%= link_to 'タイムズカーシェア', 'https://share.timescar.jp/' %>
-                    <%= link_to 'Anyca', 'https://anyca.net/' %>
-                    <%= link_to 'EveryGo', 'https://everygo.honda.co.jp/' %>
-
+        <%= video_tag(asset_path("sample.mp4"), :autoplay => true, :loop => true, :playsinline => true, muted: true) %>
+        </div>
+        
+        <div class="row featurette">
+          <div class="col-md-7 order-md-2">
+            <h2 class="featurette-heading"><span class="text-muted"></span></h2>
+              <p class="lead">
+                </br>
+                </br>
+                </br>
+                </br>
+                このページではより車の魅力を少しでも知ってほしいと思い受けました。
+                車に少しでも興味を持っていただけた方におすすめのポイントを紹介しようと思います。</br>
+                維持費の方は、正直かかってきてしまうのでコストはかかるのですが、それ以上に楽しさや良さがあります！</br>
+                単に移動の足として乗ることも、もちろんいいのですが、愛着を持って乗ることでより魅力を知ってもらえるかなと信じています！
+              </p>
+          </div>
+          <div class="col-md-5 order-md-1">
+            <%= image_tag "drive1", :size =>'400×400' %>
+            <!--<svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x400" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"></rect></svg>-->
           </div>
         </div>
-      </div>
+                  
+          <div class="row featurette">
+            <div class="col-md-7">
+              <h2 class="featurette-heading">個人的に魅力を感じた部分をご紹介させていただきます！<span class="text-muted"></span></h2>
+                <p class="lead">
+                  </br>
+                 </br>
+                  ・運転が不安な方でも安心！<%= link_to "安全装備", 'https://jaf.or.jp/common/safety-drive/new-technology/asv' %>の充実</br>
+                  ・思い通りに操る楽しみ！</br>
+                  ・第二の自宅、自由な空間！</br>
+                  ・好きな音楽を家で聴くのとは、また違う感覚で聞ける！</br>
+                  個人的な意見ですが、もし車を購入する際は、なんとなく選ばず必ずほしい！と思える車を買ってほしいです！</br>
+                  車ってやっぱり維持費がかかったりするのが・・って方におすすめなのがカーシェアリングです。ごく一部ですがご紹介させていただきます！</br>
+                  <%= link_to 'タイムズカーシェア', 'https://share.timescar.jp/' %></br>
+                  <%= link_to 'Anyca', 'https://anyca.net/' %></br>
+                  <%= link_to 'EveryGo', 'https://everygo.honda.co.jp/' %></br>
+                </p>
+            </div>
+            <div class="col-md-5">
+              <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x400" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"></rect><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
+            </div>
+          </div>
+        <!--</div>-->
       </main>
-  </div>
-</body>
+ 
+
 
 
 
