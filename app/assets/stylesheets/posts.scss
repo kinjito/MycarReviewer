@@ -76,12 +76,13 @@ video {
 
 // posts/index.html CSS
 .posts-video-wrap {
-  position: relative;
-  display: flex;
+  // position: relative;
+  // display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
   width: 100%;
+  margin-left: 100px;
 }
 
 .pagination-tab {
