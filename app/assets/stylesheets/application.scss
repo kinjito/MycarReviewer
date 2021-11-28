@@ -34,18 +34,16 @@ header {
 }
 
 div {
-  display: flex;
-
-  flex: 1;
   font-family: 'Kaisei Tokumin', serif;
 }
+
 li {
   list-style: none;/*#リストマーク消し*/
 }
-main {
-  flex: 1;
+// main {
+//   flex: 1;
 
-}
+// }
 nav {
   width: 30px;
 }
@@ -63,6 +61,7 @@ footer {
   display: flex;
   flex-direction: column;
 }
+
 .title {
   position: relative;
   color: #F8F8FF;
@@ -94,19 +93,13 @@ footer {
   font-size: 24px;
 }
 
-
+.pagination {
+  width: 215px;
+}
 
 .featurette {
    color: #fff;
 }
-
-
-
-
-
-
-
-
 
 @media screen and (max-width: 900px) {
     /*#レスポンシブ対応*/

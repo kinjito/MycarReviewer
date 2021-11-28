@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   #コントローラーに設定して、ログイン済ユーザーのみにアクセスを許可する
-  # before_action :authenticate_user!, only: [:charm]
+  before_action :authenticate_user!, only: [:charm]
 
   def show
     @user = User.find(params[:id])
@@ -35,7 +35,7 @@ class UsersController < ApplicationController
     @users = user.follower_user
         # .follower_userメソッド ：Userモデルで定義済
   end
-  
+
   # 退会機能
   def unsubscribe
     @user = User.find_by(name: params[:name])
@@ -47,11 +47,10 @@ class UsersController < ApplicationController
     reset_session
     redirect_to root_path
   end
-  # ＃
 
   def create
   end
-  
+
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
