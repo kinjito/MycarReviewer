@@ -7,6 +7,13 @@ class PostsController < ApplicationController
     @posts = @q.result(distinct: true).page(params[:page]).reverse_order.per(6)
   end
 
+
+
+  def
+  end
+
+  end
+
   def show
     @post = Post.find(params[:id])
     #コメント機能追加
@@ -28,8 +35,9 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user_id = current_user.id
     if @post.save
-      redirect_to posts_path
+      redirect_to posts_path, notice: "投稿しました！"
     else
+      flash.now[:alert] = '投稿内容を確認してください'
       render :new
     end
   end
@@ -43,8 +51,12 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find_by(id: params[:id])
-    @post.update(post_params)
-    redirect_to post_path(@post)
+    if @post.update(post_params)
+      redirect_to post_path(@post), notice: "投稿を更新しました！"
+    else
+      flash.now[:alert] = '投稿を更新できませんでした'
+      render :edit
+    end
   end
 
 
@@ -52,8 +64,11 @@ class PostsController < ApplicationController
 
   def destroy
     @post = Post.find(params[:id])
-    @post.destroy
-    redirect_to posts_path
+    if @post.destroy
+      redirect_to posts_path, notice: "投稿が削除されました"
+    else
+      render :index
+    end
   end
 
 

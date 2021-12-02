@@ -14,6 +14,17 @@ class User < ApplicationRecord
   def following?(user)
    following_user.include?(user)
   end
+  
+  def withdraw
+    update(is_valid: false)
+    reset_session
+  end
+  
+  
+  def save_with(post_id)
+    favorite = favorites.new(post_id: post_id)
+    favorite.save
+  end
 
 
   # Include default devise modules. Others available are:

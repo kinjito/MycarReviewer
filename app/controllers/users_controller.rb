@@ -4,7 +4,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    if @user.is_deleted == true
+    if @user.is_deleted
       redirect_to root_path
     end
   end
@@ -18,7 +18,7 @@ class UsersController < ApplicationController
   end
 
   # パスワード変更設定
-  def update_password
+  def edit_password
     @user = User.find(params[:id])
   end
 
@@ -42,8 +42,7 @@ class UsersController < ApplicationController
   end
 
   def withdraw
-    @user = User.find(current_user.id)
-    @user.update(is_valid: false)
+    current_user.update(is_valid: false)
     reset_session
     redirect_to root_path
   end

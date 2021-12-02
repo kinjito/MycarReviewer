@@ -11,6 +11,7 @@ class ThemeCommentsController < ApplicationController
     ThemeComment.find_by(id: params[:id]).destroy
     redirect_to users_charm_path(params[:current_user_id])
   end
+  
 
   private
 

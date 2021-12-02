@@ -25,4 +25,10 @@ class Post < ApplicationRecord
   def favorited_by?(user)
     favorites.where(user_id: user.id).exists?
   end
+  
+  def author?(current_user)
+    #技名のみ（主役は不要）
+    #三番目で決めたことを書く
+    current_user == user
+  end
 end

@@ -15,12 +15,12 @@
                     </div>
                     <div class="card-body">
                       <ul class="list-unstyled mt-3 mb-4">
-                        <li>コメント件数：<%= theme.theme_comments.size %></li></br>
+                        <li>コメント件数：<%= theme.comment_size %></li></br>
                       <% theme.theme_comments.each do |theme_comment| %>
                         <li>コメント：<%= theme_comment.comment_text %></li></br>
                         <li>ユーザー名：<%= theme_comment.user.name %></li>
                         <li>投稿日時：<%= theme_comment.created_at.strftime('%Y/%m/%d') %></li></br>
-                        <% if theme_comment.user.id == current_user.id %>
+                        <% if theme_comment.written_by?(current_user) %>
                         <li><%= link_to "コメント削除", user_theme_comment_path(theme_comment.user_id,theme_comment.id), method: :delete, class: "btn btn-danger" %></li></br>
                         <% end %>
                       <% end %>
