@@ -4,14 +4,15 @@
                </br>
                 </br>
                 <h1>このページでは、投稿された絶景スポットの場所を詳しく見れます！</h1>
-                  <span><%= link_to "一覧ページへ戻る", posts_path, class: "btn btn-secondary" %></span>
-                    <div id='map'></div>
-                    <style>
+                <span><%= link_to "一覧ページへ戻る", posts_path, class: "btn btn-secondary" %></span>
+                  <div id='map'></div>
+                  <style>
                     #map {
                       height: 700px;
                       width: 100%;
                     }
-                    </style>
+                  </style>
+            </div>
                   <script>
                   let map
                   let geocoder
@@ -77,8 +78,7 @@
                   }
                   </script>
                     <!--#mapをグーグルから読み込んでいる-->
-                  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-qnvFteh0WMWGbOVDz8Xq2PFBrIc5-_E&callback=initMap"async></script>
-              
+                  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-qnvFteh0WMWGbOVDz8Xq2PFBrIc5-_E&callback=initMap"async defer></script>
                 <!--#自動で呼び出してもらってる-->
-            </div>
+         
 
