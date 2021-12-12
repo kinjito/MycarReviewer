@@ -34,6 +34,7 @@ class PostsController < ApplicationController
     #投稿内容の保存
     @post = Post.new(post_params)
     @post.user_id = current_user.id
+    # binding.pry
     if @post.save
       redirect_to posts_path, notice: "投稿しました！"
     else
@@ -44,6 +45,7 @@ class PostsController < ApplicationController
 
   def map
     @post = Post.last
+    # binding.pry
     #postの一番最新の情報をとってくる
     @posts = Post.all
     gon.users = @posts
@@ -75,7 +77,7 @@ class PostsController < ApplicationController
   private
    # 投稿データのストロングパラメータ
   def post_params
-    params.require(:post).permit(:car_image, :detail, :car_name, :photo_address, :comment, :maker_id)
+    params.require(:post).permit(:car_image, :detail, :car_name, :photo_address, :comment, :maker_id, :latitude, :longitude, )
   end
 
 end
